@@ -1,56 +1,108 @@
-# Rynn UI
+# Wataru API
 
-![Layout](https://files.catbox.moe/tot5d8.png)
-
-Rynn UI is a simple and easy-to-use API documentation interface built with Express.js. It allows developers to quickly set up and view API documentation with customizable settings using a `settings.json` file. 
+Wataru API is a modern, interactive API documentation and testing interface built with HTML, Tailwind CSS, and JavaScript. It provides a sleek, dark-themed dashboard for developers to explore, test, and integrate API endpoints with ease.
 
 ## Features
-- Simple API documentation interface
-- Easily customizable with a `settings.json` file
-- Categorized APIs for easy navigation
-- Includes real-time settings such as name, version, description, and creator
-- Supports image display in the UI for branding
-- Links to external resources such as source code and contact info
+
+- **Interactive API Testing**: Test API endpoints directly from the dashboard with a built-in request/response interface
+- **Modern Dark Theme UI**: Sleek, responsive design with animations and visual effects
+- **Categorized API Navigation**: Organized sidebar with searchable categories and endpoints
+- **Real-time API Response Visualization**: View formatted JSON responses with syntax highlighting
+- **Notification System**: Built-in notification center with localStorage persistence
+- **Responsive Design**: Optimized for mobile, tablet, and desktop devices
+- **Dynamic Configuration**: Easily customizable through a `settings.json` file
+- **Loading Animations**: Smooth transitions and loading states for better UX
+- **API Statistics**: Dashboard with endpoint counts and category metrics
 
 ## Live Demo
 
-Check out a live demo of Rynn UI [here](https://rynnn-ui.vercel.app)
+Check out a live demo of Wataru API [here](https://wataru-api.vercel.app)
 
 ## Setup
 
 ### Prerequisites
+
 - Node.js (>= 14.0.0)
+- Express.js for the backend server
 
 ### Installation
+
 1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/RynnKunnn/Rynn-UI.git
-   ```
+
+```shellscript
+git clone https://github.com/yourusername/wataru-api.git
+```
+
 2. Navigate to the project directory:
-   ```bash
-   cd Rynn-UI
-   ```
+
+```shellscript
+cd wataru-api
+```
+
 3. Install dependencies:
-   ```bash
-   npm install
-   ```
+
+```shellscript
+npm install
+```
+
 4. Modify the `settings.json` file to configure your API documentation.
 5. Start the server:
-   ```bash
-   npm start
-   ```
+
+```shellscript
+npm start
+```
+
 Your API documentation should now be available at `http://localhost:4000`.
 
-## Customization
+> **Note**: The system will automatically detect your GitHub repository information and use it in the dashboard. The repository name and author will be displayed in the appropriate sections of the UI.
 
-![Layout](https://files.catbox.moe/bjazqb.png)
+## Creating API Endpoints
+
+Wataru API makes it easy to create and document API endpoints. Each endpoint is defined as a Node.js module with metadata and a handler function.
+
+### Example API Endpoint
+
+Here's an example endpoint that comes with Wataru API:
+
+```javascript
+const meta = {
+  name: "hello",
+  version: "1.0.0",
+  description: "A simple example API that returns a greeting message",
+  author: "auto", // Will be replaced with repository owner
+  method: "get",
+  category: "examples",
+  path: "/api/hello?name="
+};
+
+async function onStart({ res, req }) {
+  // Extract the 'name' parameter from the query string
+  const { name } = req.query;
+
+  // Default to 'World' if no name is provided
+  const greeting = name ? `Hello, ${name}!` : "Hello, World!";
+
+  // Return a simple JSON response
+  return res.json({
+    message: greeting,
+    timestamp: new Date().toISOString(),
+    powered_by: "Wataru API"
+  });
+}
+
+module.exports = { meta, onStart };
+```
+
+Place this file in your API endpoints directory (typically `/api/endpoints/`), and Wataru API will automatically detect and display it in the dashboard.
+
+## Customization
 
 You can easily customize the UI by editing the `settings.json` file. Below is a breakdown of the configurable fields:
 
 ### General Settings
 
-- `name`: Sets the name of your API (e.g., "Rynn Api's").
-- `version`: Specifies the version of your API interface (e.g., "Rynn UI").
+- `name`: Sets the name of your API (e.g., "Wataru's Api").
+- `version`: Specifies the version of your API interface (e.g., "Wataru UI").
 - `description`: A brief description of your API documentation.
 
 ### Header Customization
@@ -64,29 +116,38 @@ You can easily customize the UI by editing the `settings.json` file. Below is a 
 
 ### Api Settings
 
-- `creator`: Displays the creator's name in the interface.
+- `creator`: Displays the creator's name in the interface. Set to "auto" to use the repository owner's name.
 
 ### Links
 
 - `name`: Label for the link (e.g., "Source Code").
-- `url`: The URL to the resource.
+- `url`: The URL to the resource. Use "auto" to automatically link to the current repository.
 
-### Categories and Apis
+### Notifications
 
-Organize APIs into categories for better navigation:
-- **Category Name (e.g., "AI (Artificial Intelligence)")**
-  - `items`: Define individual APIs within the category.
-    - `name`: The name of the API (e.g., "LuminAI").
-    - `desc`: A short description of the API (e.g., "Talk with luminai").
-    - `path`: The endpoint path for the API (e.g., /ai/luminai?text=).
+You can configure notifications that will appear in the dashboard:
+
+```json
+"notifications": [
+  {
+    "title": "Welcome to API Dashboard",
+    "message": "Explore our APIs and integrate them into your projects."
+  },
+  {
+    "title": "New Feature",
+    "message": "We've added support for WebSocket APIs. Check them out!"
+  }
+]
+```
 
 ### Example `settings.json`
 
-Here’s an example of how your settings.json file might look:
+Here's an example of how your settings.json file might look:
+
 ```json
 {
-  "name": "Rynn Api's",
-  "version": "Rynn UI",
+  "name": "Wataru's Api",
+  "version": "Wataru UI",
   "description": "Simple and Easy-to-Use API Documentation",
   "header": {
     "status": "Online!",
@@ -100,59 +161,101 @@ Here’s an example of how your settings.json file might look:
     }
   },
   "apiSettings": {
-    "creator": "Rynn"
+    "creator": "auto" // Will be replaced with repository owner
   },
   "links": [
     {
       "name": "Source Code",
-      "url": "https://github.com/rynxzyy/Rynn-UI"
+      "url": "auto" // Will be replaced with repository URL
     },
     {
       "name": "Contact Me",
-      "url": "https://wa.me/6285173370004"
+      "url": "https://t.me/ajirodesu"
     }
   ],
-  "categories": [
+  "notifications": [
     {
-      "name": "AI (Artificial Intelligence)",
-      "items": [
-        {
-          "name": "LuminAI",
-          "desc": "Talk with luminai",
-          "path": "/ai/luminai?text="
-        },
-        {
-          "name": "HydroMind",
-          "desc": "Talk with hydromind",
-          "path": "/ai/hydromind?text=&model=",
-          "innerDesc": "See the list of supported AI models here: https://mind.hydrooo.web.id"
-        }
-      ]
+      "title": "Welcome to API Dashboard",
+      "message": "Explore our APIs and integrate them into your projects."
     },
     {
-      "name": "Random",
-      "items": [
-        {
-          "name": "Blue Archive",
-          "desc": "Blue Archive Random Images",
-          "path": "/random/ba"
-        }
-      ]
-    },
-    {
-      "name": "Search Tools",
-      "items": [
-        {
-          "name": "YouTube",
-          "desc": "Video search",
-          "path": "/search/youtube?q="
-        }
-      ]
+      "title": "New Feature",
+      "message": "We've added support for WebSocket APIs. Check them out!"
     }
   ]
 }
 ```
-This structure allows you to easily adapt and configure the interface to suit your API needs!
+
+## Dashboard Features
+
+The Wataru API dashboard includes:
+
+1. **Interactive Sidebar**:
+   1. Categorized API endpoints
+   2. Search functionality with keyboard shortcut (Ctrl+K)
+   3. Collapsible categories
+
+2. **API Testing Interface**:
+   1. Test endpoints directly from the dashboard
+   2. Input parameters with validation
+   3. Formatted JSON responses with syntax highlighting
+
+3. **Notification Center**:
+   1. Real-time notifications
+   2. Persistent notification storage
+   3. Unread indicators
+
+4. **Statistics Dashboard**:
+   1. Total API count
+   2. Category breakdown
+   3. Method-specific metrics (GET, POST, etc.)
+
+5. **Responsive Design**:
+   1. Mobile-friendly navigation
+   2. Adaptive layout for different screen sizes
+   3. Touch-optimized interactions
+
+## Advanced API Example
+
+For more complex use cases, here's an example of an additional functionality endpoint:
+
+```javascript
+const meta = {
+  name: "example",
+  version: "1.0.0",
+  description: "A simple example API that demonstrates basic functionality",
+  author: "auto", // Will be replaced with repository owner
+  method: "get",
+  category: "examples",
+  path: "/api/example?text="
+};
+
+async function onStart({ res, req }) {
+  // Extract the 'text' parameter from the query string
+  const { text } = req.query;
+
+  if (!text) {
+    return res.status(400).json({ 
+      status: false, 
+      error: 'Text parameter is required' 
+    });
+  }
+
+  // Process the text (in this example, we'll just reverse it)
+  const reversed = text.split('').reverse().join('');
+
+  // Return a JSON response
+  return res.json({
+    original: text,
+    reversed: reversed,
+    length: text.length,
+    timestamp: new Date().toISOString(),
+    powered_by: "Wataru API"
+  });
+}
+
+module.exports = { meta, onStart };
+```
 
 # Support
 
@@ -165,16 +268,17 @@ This project is designed to be easily deployable on various platforms. You can h
 - **[AWS](https://aws.amazon.com/)**: Amazon Web Services for scalable and customizable cloud hosting.
 - **[Railway](https://railway.app/)**: A platform for deploying apps with easy integration and deployment steps.
 
-Make sure your platform supports Node.js, and configure it to run your API according to the platform’s deployment guidelines.
+Make sure your platform supports Node.js, and configure it to run your API according to the platform's deployment guidelines.
 
 If you need help with deployment, feel free to reach out to the creator or check the documentation of your chosen platform.
+
 # Credits
 
 This project is created and maintained by:
 
 - **[Rynn](https://github.com/rynxzyy)**: Creator and main developer of the project.
 - **[Lenwy](https://github.com/Lenwyy)**: For the inspiration behind the project.
-- **[Siputzx](https://github.com/siputzx)**: For providing the LuminAI API.
+- **[AjiroDesu](https://github.com/ajirodesu)**: The one who modify the entire API functionality and Website's ui and ux.
 
 Special thanks for the support and contributions throughout the development.
 
