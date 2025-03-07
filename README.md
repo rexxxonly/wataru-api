@@ -114,12 +114,12 @@ You can easily customize the UI by editing the `settings.json` file. Below is a 
 
 ### Api Settings
 
-- `creator`: Displays the creator's name in the interface. Set to "auto" to use the repository owner's name.
+- `creator`: Displays the creator's name in the api response. and replace the "Your Name" with your code name.
 
 ### Links
 
 - `name`: Label for the link (e.g., "Source Code").
-- `url`: The URL to the resource. Use "auto" to automatically link to the current repository.
+- `url`: The URL to the resource. replace it with your repository link.
 
 ### Notifications
 
