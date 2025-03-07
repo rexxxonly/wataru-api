@@ -54,8 +54,6 @@ npm start
 
 Your API documentation should now be available at `http://localhost:4000`.
 
-> **Note**: The system will automatically detect your GitHub repository information and use it in the dashboard. The repository name and author will be displayed in the appropriate sections of the UI.
-
 ## Creating API Endpoints
 
 Wataru API makes it easy to create and document API endpoints. Each endpoint is defined as a Node.js module with metadata and a handler function.
