@@ -116,6 +116,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'web', 'portal.html'));
 });
 
+// Add route for the test POST API form
+app.get('/test-post', (req, res) => {
+  res.sendFile(path.join(__dirname, 'web', 'test-post.html'));
+});
+
 app.get('/docs', (req, res) => {
   res.sendFile(path.join(__dirname, 'web', 'docs.html'));
 });

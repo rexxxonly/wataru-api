@@ -377,7 +377,7 @@
           <span id="sidebarHeader" class="text-xl font-semibold gradient-text font-heading"></span>
           <div id="sidebarVersion" class="ml-2 bg-primary-900/50 text-primary-300 px-2 py-0.5 text-xs rounded-full"></div>
         </a>
-        <!-- Update the search icon in the sidebar -->
+        <!-- Sidebar search toggle -->
         <button id="sidebarSearchToggle" class="p-2 rounded-full hover:bg-dark-600 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -401,7 +401,7 @@
         </div>
         <div class="unified-separator"></div>
       </div>
-      <!-- Sidebar Categories with added spacing -->
+      <!-- Sidebar Categories -->
       <div id="sidebarCategories" class="flex-1 overflow-y-auto px-4 mt-4 pb-6"></div>
     </div>
   </aside>
@@ -410,7 +410,6 @@
   <nav id="navbar" class="fixed top-0 inset-x-0 z-30 transition-all duration-300">
     <div class="container mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center">
-        <!-- Hamburger button moved to the first space -->
         <button id="sidebarToggle" class="p-2 mr-4 rounded-full hover:bg-dark-700 transition-colors lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -421,7 +420,6 @@
           <div id="versionHeader" class="bg-primary-900/50 text-primary-300 px-3 py-1 text-xs rounded-full"></div>
         </a>
       </div>
-      <!-- Notification icon moved to the last space -->
       <div class="flex items-center">
         <button id="notificationToggle" class="p-2 rounded-full hover:bg-dark-700 transition-colors relative">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -436,9 +434,8 @@
 
   <!-- Main Content -->
   <main class="lg:ml-80 transition-all duration-300">
-    <div class="h-16"></div> <!-- Spacer for fixed navbar -->
+    <div class="h-16"></div>
     <div class="container mx-auto px-6 py-8">
-      <!-- Replace the Header Banner section with this updated version -->
       <!-- Header Banner -->
       <div class="flex flex-col items-center mb-12 fadeIn">
         <div class="w-full flex justify-center mb-6">
@@ -450,7 +447,6 @@
             <div id="version" class="bg-gradient-to-r from-primary-900/50 to-primary-800/50 text-primary-300 px-3 py-1 text-xs rounded-full border border-primary-700/30"></div>
           </div>
           <p id="description" class="text-gray-400 text-lg mb-4"></p>
-          <!-- New element to include header.status text from settings -->
           <div id="headerStatus" class="text-sm text-green-400 font-medium mb-6 flex items-center justify-center">
             <span class="inline-block w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
             <span id="headerStatusText"></span>
@@ -458,7 +454,7 @@
           <div id="apiLinks" class="flex flex-wrap gap-4 justify-center"></div>
         </div>
       </div>
-      <!-- Dashboard Stats (All cards retained) -->
+      <!-- Dashboard Stats -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 slideUp" style="animation-delay: 0.3s;">
         <!-- Total APIs Card -->
         <div class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border">
@@ -550,7 +546,6 @@
               <div class="absolute inset-0 border-4 border-primary-800/50 border-t-primary-400 rounded-full animate-spin"></div>
             </div>
           </div>
-          <!-- Fixed the truncated line for API response content -->
           <pre id="apiResponseContent" class="hidden bg-dark-900 rounded-lg p-4 text-gray-300 mt-4 text-sm overflow-x-auto font-mono border border-dark-600/50"></pre>
         </div>
         <!-- Modal Footer -->
@@ -586,12 +581,10 @@
     }, 20);
   }
 
-  // Start loading animation when the page starts loading
   window.addEventListener('load', animateLoading);
 
   document.addEventListener('DOMContentLoaded', async () => {
-
-    // Sidebar elements
+    // Sidebar elements and helpers
     const loadingScreen = document.getElementById("loadingScreen");
     const capitalizeFirstLetter = str => str ? str.charAt(0).toUpperCase() + str.slice(1) : str;
     const sidebar = document.getElementById('sidebar');
@@ -610,7 +603,6 @@
     const notificationPopup = document.getElementById('notificationPopup');
     const notificationList = document.getElementById('notificationList');
 
-    // Cancel button for search bar
     const sidebarSearchCancel = document.getElementById('sidebarSearchCancel');
     sidebarSearchCancel.addEventListener('click', () => {
       toggleSearch();
@@ -618,7 +610,6 @@
       sidebarSearch.dispatchEvent(new Event('input'));
     });
 
-    // Reset the entire sidebar to its default state
     function resetSidebar() {
       sidebarSearchContainer.classList.add('hidden');
       sidebarSearchToggle.classList.remove('hidden');
@@ -636,7 +627,6 @@
       });
     }
 
-    // Toggle sidebar (reset entire sidebar when closing)
     const toggleSidebar = () => {
       const isOpen = !sidebar.classList.contains('-translate-x-full');
       if (isOpen) {
@@ -654,7 +644,6 @@
     sidebarToggle.addEventListener('click', toggleSidebar);
     sidebarOverlay.addEventListener('click', toggleSidebar);
 
-    // Sidebar search functionality
     const toggleSearch = () => {
       const isVisible = !sidebarSearchContainer.classList.contains('hidden');
       if (isVisible) {
@@ -682,7 +671,6 @@
 
     sidebarSearchToggle.addEventListener('click', toggleSearch);
 
-    // Handle search clear button
     sidebarSearchClear.addEventListener('click', () => {
       sidebarSearch.value = '';
       sidebarSearch.dispatchEvent(new Event('input'));
@@ -703,13 +691,11 @@
       }
     });
 
-    // Filter sidebar items based on search input
     sidebarSearch.addEventListener('input', () => {
       const searchTerm = sidebarSearch.value.toLowerCase();
       const apiItems = document.querySelectorAll('.sidebar-api-item');
       const categoryHeaders = document.querySelectorAll('#sidebarCategories button');
 
-      // Show/hide clear button based on search input
       if (searchTerm.length > 0) {
         sidebarSearchClear.classList.remove('hidden');
       } else {
@@ -746,14 +732,14 @@
       });
     });
 
-    // Single API request handling
     document.addEventListener('click', event => {
       const apiItem = event.target.closest('.sidebar-api-item');
       if (apiItem) handleApiClick(apiItem.dataset);
     });
 
     function handleApiClick(dataset) {
-      const { apiPath, apiName, apiDesc, apiAuthor } = dataset;
+      const { apiPath, apiName, apiDesc, apiAuthor, apiMethod } = dataset;
+      const method = apiMethod ? apiMethod.toLowerCase() : 'get';
       const modal = document.getElementById('apiResponseModal');
       modal.classList.remove('hidden');
       const modalRefs = {
@@ -776,8 +762,9 @@
       modalRefs.queryInputContainer.innerHTML = '';
       modalRefs.submitBtn.classList.add('hidden');
 
-      let baseApiUrl = `${window.location.origin}${apiPath}`;
-      let params = new URLSearchParams(apiPath.split('?')[1]);
+      let baseApiUrl = `${window.location.origin}${apiPath.split('?')[0]}`;
+      let paramsString = apiPath.split('?')[1] || '';
+      let params = new URLSearchParams(paramsString);
       let hasParams = params.toString().length > 0;
 
       if (hasParams) {
@@ -814,25 +801,30 @@
         modalRefs.submitBtn.disabled = true;
         modalRefs.submitBtn.onclick = async () => {
           const inputs = modalRefs.queryInputContainer.querySelectorAll('input');
-          const newParams = new URLSearchParams();
           let isValid = true;
+          const data = {};
           inputs.forEach(input => {
             if (!input.value.trim()) {
               isValid = false;
               input.classList.add('border-red-500', 'ring-1', 'ring-red-500');
             } else {
               input.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
-              newParams.append(input.dataset.param, input.value.trim());
+              data[input.dataset.param] = input.value.trim();
             }
           });
           if (!isValid) return;
-          const apiUrlWithParams = `${window.location.origin}${apiPath.split('?')[0]}?${newParams.toString()}`;
           modalRefs.queryInputContainer.innerHTML = '';
           modalRefs.submitBtn.classList.add('hidden');
-          handleApiRequest(apiUrlWithParams, modalRefs, apiName);
+          if (method === 'get') {
+            const newParams = new URLSearchParams(data);
+            const apiUrlWithParams = `${baseApiUrl}?${newParams.toString()}`;
+            handleApiRequest(apiUrlWithParams, modalRefs, apiName, 'get');
+          } else if (method === 'post') {
+            handleApiRequest(baseApiUrl, modalRefs, apiName, 'post', data);
+          }
         };
       } else {
-        handleApiRequest(baseApiUrl, modalRefs, apiName);
+        handleApiRequest(baseApiUrl, modalRefs, apiName, method);
       }
     }
 
@@ -848,11 +840,17 @@
       }
     }
 
-    async function handleApiRequest(apiUrl, modalRefs, apiName) {
+    async function handleApiRequest(apiUrl, modalRefs, apiName, method = 'get', bodyData = null) {
       modalRefs.spinner.classList.remove('hidden');
       modalRefs.content.classList.add('hidden');
       try {
-        const response = await fetch(apiUrl);
+        const options = {};
+        if (method === 'post') {
+          options.method = 'POST';
+          options.headers = { 'Content-Type': 'application/json' };
+          if (bodyData) options.body = JSON.stringify(bodyData);
+        }
+        const response = await fetch(apiUrl, options);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const contentType = response.headers.get('Content-Type');
         if (contentType && contentType.startsWith('image/')) {
@@ -868,23 +866,17 @@
           const data = await response.json();
           const formattedJson = JSON.stringify(data, null, 2);
           modalRefs.content.textContent = formattedJson;
-
-          modalRefs.content.innerHTML = formattedJson
-            .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-              let cls = 'text-amber-300'; // number
-              if (/^"/.test(match)) {
-                if (/:$/.test(match)) {
-                  cls = 'text-primary-300'; // key
-                } else {
-                  cls = 'text-green-300'; // string
-                }
-              } else if (/true|false/.test(match)) {
-                cls = 'text-blue-300'; // boolean
-              } else if (/null/.test(match)) {
-                cls = 'text-red-300'; // null
-              }
-              return '<span class="' + cls + '">' + match + '</span>';
-            });
+          modalRefs.content.innerHTML = formattedJson.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            let cls = 'text-amber-300';
+            if (/^"/.test(match)) {
+              cls = /:$/.test(match) ? 'text-primary-300' : 'text-green-300';
+            } else if (/true|false/.test(match)) {
+              cls = 'text-blue-300';
+            } else if (/null/.test(match)) {
+              cls = 'text-red-300';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+          });
         }
         modalRefs.endpoint.textContent = apiUrl;
         modalRefs.endpoint.classList.remove('hidden');
@@ -901,7 +893,6 @@
       document.getElementById('apiResponseModal').classList.add('hidden');
     });
 
-    // Fix notification click behavior by stopping propagation
     notificationToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       notificationPopup.classList.toggle('hidden');
@@ -916,7 +907,6 @@
       }
     });
 
-    // Handle navbar appearance based on scroll position and toggle header title and online badge visibility
     function updateNavbarAppearance() {
       const headerTitle = document.getElementById('header');
       const headerBadge = document.getElementById('versionHeader');
@@ -936,11 +926,9 @@
     window.addEventListener('scroll', updateNavbarAppearance);
     updateNavbarAppearance();
 
-    // Notification handling with localStorage persistence
     let notifications = [];
     const STORAGE_KEY = 'dashboard_notifications';
 
-    // Load notifications from localStorage
     function loadNotifications() {
       const savedNotifications = localStorage.getItem(STORAGE_KEY);
       if (savedNotifications) {
@@ -954,7 +942,6 @@
       return [];
     }
 
-    // Save notifications to localStorage
     function saveNotifications() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(notifications));
     }
@@ -975,7 +962,6 @@
         notificationList.innerHTML = '<div class="p-3 text-gray-400 text-center">No notifications</div>';
         return;
       }
-
       notifications.forEach((notification, index) => {
         const notificationEl = document.createElement('div');
         notificationEl.className = `p-3 ${notification.read ? 'bg-dark-700' : 'bg-gradient-to-r from-dark-700 to-dark-600'} rounded-md transition-all hover:bg-dark-600 cursor-pointer`;
@@ -992,7 +978,7 @@
         `;
         notificationEl.addEventListener('click', () => {
           notifications[index].read = true;
-          saveNotifications(); // Save to localStorage when marking as read
+          saveNotifications();
           updateNotificationBadge();
           renderNotifications();
         });
@@ -1015,18 +1001,14 @@
         }
       };
 
-      // Handle the imageSrc
       const dynamicImage = document.getElementById('dynamicImage');
       if (dynamicImage && settings.header && settings.header.imageSrc) {
         let imageSrc = settings.header.imageSrc;
         if (Array.isArray(imageSrc)) {
-          // If it's an array, choose a random image
           imageSrc = imageSrc[Math.floor(Math.random() * imageSrc.length)];
         }
         dynamicImage.src = imageSrc;
         dynamicImage.alt = settings.name || "Dashboard";
-
-        // Adjust image size based on screen width
         const setImageSize = () => {
           const screenWidth = window.innerWidth;
           if (screenWidth < 768) {
@@ -1044,14 +1026,12 @@
         window.addEventListener('resize', setImageSize);
       }
 
-      // ... (rest of the code remains the same)
       setContent('page', 'textContent', settings.name || "API Dashboard");
       setContent('header', 'textContent', settings.name || "API Dashboard");
       setContent('name', 'textContent', settings.name || "API Dashboard");
       setContent('version', 'textContent', settings.version || "v1.0 Beta");
       setContent('versionHeader', 'textContent', settings.header.status || "Online!");
       setContent('description', 'textContent', settings.description || "Interactive API Explorer");
-      // Include header.status in the main banner as well
       setContent('headerStatusText', 'textContent', settings.header.status || "Online!");
       setContent('sidebarHeader', 'textContent', settings.name || "API Dashboard");
       setContent('sidebarVersion', 'textContent', settings.version || "v1.0 Beta");
@@ -1068,40 +1048,25 @@
         });
       }
 
-      // Load saved notifications first
       const savedNotifications = loadNotifications();
-
-      // Handle notifications dynamically from settings.json
       if (settings.notifications && Array.isArray(settings.notifications)) {
-        // Merge with saved notifications, preserving read status
         const notificationMap = new Map();
-
-        // First add saved notifications to the map
         savedNotifications.forEach(n => {
           notificationMap.set(n.title + n.message, n);
         });
-
-        // Then add new notifications from settings, preserving read status if exists
         settings.notifications.forEach(n => {
           const key = n.title + n.message;
           if (notificationMap.has(key)) {
-            // Keep the read status from saved notification
             n.read = notificationMap.get(key).read;
           } else {
-            // New notification, mark as unread
             n.read = false;
           }
           notificationMap.set(key, n);
         });
-
-        // Convert map back to array
         notifications = Array.from(notificationMap.values());
-
-        // Save the merged notifications
         saveNotifications();
         updateNotificationBadge();
       } else {
-        // If no notifications in settings, use saved ones
         notifications = savedNotifications;
         updateNotificationBadge();
       }
@@ -1159,6 +1124,7 @@
           itemEl.dataset.apiName = item.name;
           itemEl.dataset.apiDesc = item.desc;
           itemEl.dataset.apiAuthor = item.author || '';
+          itemEl.dataset.apiMethod = method;
           itemEl.innerHTML = `
             <div class="flex items-center justify-between">
               <span class="text-sm truncate">${capitalizedName}</span>
@@ -1190,10 +1156,9 @@
         loadingScreen.style.opacity = '0';
         loadingScreen.style.transition = 'opacity 0.5s ease';
         setTimeout(() => { loadingScreen.style.display = 'none'; }, 500);
-      }, 2000); // Increased delay to 2 seconds to ensure the loading animation is visible
+      }, 2000);
     }
   });
   </script>
 </body>
 </html>
-
