@@ -69,10 +69,10 @@ const meta = {
   name: "hello",
   version: "1.0.0",
   description: "A simple example API that returns a greeting message",
-  author: "auto", // Will be replaced with repository owner
+  author: "Your Name", 
   method: "get",
   category: "examples",
-  path: "/api/hello?name="
+  path: "/hello?name="
 };
 
 async function onStart({ res, req }) {
@@ -93,7 +93,7 @@ async function onStart({ res, req }) {
 module.exports = { meta, onStart };
 ```
 
-Place this file in your API endpoints directory (typically `/api/endpoints/`), and Wataru API will automatically detect and display it in the dashboard.
+Place this file in your API endpoints directory (typically `/endpoints/`), and Wataru API will automatically detect and display it in the dashboard.
 
 ## Customization
 
@@ -161,12 +161,12 @@ Here's an example of how your settings.json file might look:
     }
   },
   "apiSettings": {
-    "creator": "auto" // Will be replaced with repository owner
+    "creator": "Your Name" 
   },
   "links": [
     {
       "name": "Source Code",
-      "url": "auto" // Will be replaced with repository URL
+      "url": "Your Name"
     },
     {
       "name": "Contact Me",
@@ -224,10 +224,10 @@ const meta = {
   name: "example",
   version: "1.0.0",
   description: "A simple example API that demonstrates basic functionality",
-  author: "auto", // Will be replaced with repository owner
+  author: "Your Name", 
   method: "get",
   category: "examples",
-  path: "/api/example?text="
+  path: "/example?text="
 };
 
 async function onStart({ res, req }) {
