@@ -259,8 +259,7 @@ module.exports = { meta, onStart };
 
 This project is designed to be easily deployable on various platforms. You can host it on any platform that supports Node.js applications. Some popular options include:
 
-- **[Render]
-(https://render.com/)**: A cloud platform for easy app deployment, scaling, and management.
+- **[Render](https://render.com/)**: A cloud platform for easy app deployment, scaling, and management.  
 - **[Vercel](https://vercel.com/)**: Easy deployment with minimal configuration.
 - **[Heroku](https://www.heroku.com/)**: A platform-as-a-service for deploying, managing, and scaling apps.
 - **[Netlify](https://www.netlify.com/)**: A platform for deploying static sites and serverless functions.
