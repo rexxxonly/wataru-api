@@ -43,34 +43,40 @@ app.use((req, res, next) => {
   next();
 });
 
-// Load API modules from the "api" folder and collect metadata
+// Load API modules from the "api" folder and its subfolders recursively
 const apiFolder = path.join(__dirname, 'api');
 let totalRoutes = 0;
 const apiModules = [];
 
-fs.readdirSync(apiFolder).forEach((file) => {
-  const filePath = path.join(apiFolder, file);
-  if (fs.statSync(filePath).isFile() && path.extname(file) === '.js') {
-    const module = require(filePath);
-    const basePath = module.meta.path.split('?')[0];
-    const routePath = '/api' + basePath;
-    // Use the method from meta (default to 'get' if not specified)
-    const method = (module.meta.method || 'get').toLowerCase();
-    app[method](routePath, (req, res) => {
-      module.onStart({ req, res });
-    });
-    apiModules.push({
-      name: module.meta.name,
-      description: module.meta.description,
-      category: module.meta.category,
-      path: routePath + (module.meta.path.includes('?') ? '?' + module.meta.path.split('?')[1] : ''),
-      author: module.meta.author,
-      method: module.meta.method || 'get'
-    });
-    totalRoutes++;
-    console.log(chalk.bgHex('#FFFF99').hex('#333').bold(` Loaded Route: ${module.meta.name} (${method.toUpperCase()})`));
-  }
-});
+// Recursive function to load modules
+const loadModules = (dir) => {
+  fs.readdirSync(dir).forEach((file) => {
+    const filePath = path.join(dir, file);
+    if (fs.statSync(filePath).isDirectory()) {
+      loadModules(filePath); // Recurse into subfolder
+    } else if (fs.statSync(filePath).isFile() && path.extname(file) === '.js') {
+      const module = require(filePath);
+      const basePath = module.meta.path.split('?')[0];
+      const routePath = '/api' + basePath;
+      const method = (module.meta.method || 'get').toLowerCase();
+      app[method](routePath, (req, res) => {
+        module.onStart({ req, res });
+      });
+      apiModules.push({
+        name: module.meta.name,
+        description: module.meta.description,
+        category: module.meta.category,
+        path: routePath + (module.meta.path.includes('?') ? '?' + module.meta.path.split('?')[1] : ''),
+        author: module.meta.author,
+        method: module.meta.method || 'get'
+      });
+      totalRoutes++;
+      console.log(chalk.bgHex('#FFFF99').hex('#333').bold(` Loaded Route: ${module.meta.name} (${method.toUpperCase()})`));
+    }
+  });
+};
+
+loadModules(apiFolder);
 
 console.log(chalk.bgHex('#90EE90').hex('#333').bold(' Load Complete! ✓ '));
 console.log(chalk.bgHex('#90EE90').hex('#333').bold(` Total Routes Loaded: ${totalRoutes} `));
@@ -99,7 +105,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/docs', (req, res) => {
-
   res.sendFile(path.join(__dirname, 'web', 'docs.html'));
 });
 
