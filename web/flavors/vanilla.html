@@ -46,14 +46,14 @@
                 950: '#2e1065'
               },
               dark: {
-                950: '#0f0720',
-                900: '#150c2e',
-                850: '#1a0d3b',
-                800: '#1f1045',
-                700: '#25134f',
-                600: '#2a1659',
-                500: '#321a6c',
-                400: '#3b1e80'
+                950: '#09090b',
+                900: '#101014',
+                850: '#141418',
+                800: '#18181c',
+                700: '#1f1f23',
+                600: '#27272b',
+                500: '#2e2e32',
+                400: '#39393d'
               },
               accent: {
                 purple: '#9333ea',
@@ -90,16 +90,13 @@
       };
     </script>
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
     <!-- Custom CSS for Enhanced UI/UX -->
     <style>
       /* Smooth custom scrollbar for WebKit */
       ::-webkit-scrollbar { width: 6px; height: 6px; }
       ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 3px; }
-      ::-webkit-scrollbar-thumb { background: rgba(236, 72, 153, 0.2); border-radius: 3px; }
-      ::-webkit-scrollbar-thumb:hover { background: rgba(236, 72, 153, 0.5); }
+      ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.2); border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.5); }
 
       /* Basic animations */
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -116,7 +113,7 @@
       /* Unified separator styling */
       .unified-separator {
         height: 1px;
-        background: linear-gradient(90deg, rgba(236, 72, 153, 0.1), rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.1));
+        background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.1));
         position: absolute; left: 0; right: 0; bottom: -1px;
         transition: opacity 0.3s ease;
       }
@@ -124,60 +121,27 @@
 
       /* Input focus and search bar transitions */
       #sidebarSearchContainer { transition: opacity 0.2s ease, transform 0.2s ease; }
-      #sidebarSearch:focus { box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.3); }
+      #sidebarSearch:focus { box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3); }
 
       /* Card hover and shadow effects for depth */
-      .card-hover { 
-        transition: all 0.3s ease; 
-        border: 1px solid rgba(147, 51, 234, 0.1); 
-        position: relative; 
-        z-index: 1; 
-        overflow: hidden;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        background: rgba(31, 16, 69, 0.4);
-      }
-
+      .card-hover { transition: all 0.3s ease; border: 1px solid rgba(139, 92, 246, 0.1); position: relative; z-index: 1; overflow: hidden; }
       .card-hover::before {
         content: '';
         position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
         opacity: 0; transition: opacity 0.3s ease; z-index: -1;
       }
-
       .card-hover:hover {
         transform: translateY(-3px);
-        box-shadow: 0 10px 25px -5px rgba(147, 51, 234, 0.2),
-                    0 8px 10px -6px rgba(236, 72, 153, 0.2);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+                    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        border-color: rgba(139, 92, 246, 0.5);
       }
-
       .card-hover:hover::before { opacity: 1; }
-
-      /* Card border effect on hover/touch */
-      .card-hover::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 0.75rem;
-        padding: 1px;
-        background: linear-gradient(135deg, #9333ea, #ec4899);
-        -webkit-mask: 
-          linear-gradient(#fff 0 0) content-box, 
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .card-hover:hover::after,
-      .card-hover:active::after {
-        opacity: 1;
-      }
 
       /* Gradient text for a modern look */
       .gradient-text {
-        background: linear-gradient(to right, #9333ea, #ec4899);
+        background: linear-gradient(to right, #a78bfa, #ec4899);
         -webkit-background-clip: text; background-clip: text; color: transparent;
       }
 
@@ -198,16 +162,16 @@
       .gradient-border:hover::before { opacity: 1; }
 
       /* Animated backgrounds for visual appeal */
-      .gradient-bg { background: linear-gradient(135deg, rgba(147, 51, 234, 0.1) 0%, rgba(0, 0, 0, 0) 100%); }
+      .gradient-bg { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(0, 0, 0, 0) 100%); }
       .animated-bg {
-        background: linear-gradient(270deg, #1f1045, #321a6c);
+        background: linear-gradient(270deg, #18181c, #27272b);
         background-size: 200% 200%; animation: gradient-x 3s ease infinite;
       }
 
       /* Glass effect for overlays and modals */
       .glass-effect {
         backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-        background: rgba(31, 16, 69, 0.7); border: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(24, 24, 28, 0.7); border: 1px solid rgba(255, 255, 255, 0.05);
       }
 
       /* Gradient button with dynamic hover state */
@@ -246,11 +210,7 @@
       .method-badge:hover::before { left: 100%; }
 
       /* Shimmer effect for the loading bar */
-      #loadingBar { 
-        animation: shimmer 2s linear infinite; 
-        background-size: 200% 100%;
-        background-image: linear-gradient(to right, #9333ea, #ec4899, #9333ea);
-      }
+      #loadingBar { animation: shimmer 2s linear infinite; background-size: 200% 100%; }
       @keyframes shimmer {
         0% { background-position: 100% 0; }
         100% { background-position: -100% 0; }
@@ -258,96 +218,31 @@
 
       /* Updated Action Buttons for Endpoint & Results */
       .copy-download-btn {
-        background: linear-gradient(135deg, rgba(147, 51, 234, 0.2), rgba(236, 72, 153, 0.2));
+        background-color: rgba(41, 41, 46, 0.8);
         color: #fff;
         padding: 0.25rem 0.75rem;
         border-radius: 0.375rem;
         font-size: 0.875rem;
-        border: 1px solid rgba(147, 51, 234, 0.3);
-        transition: all 0.3s ease;
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
         cursor: pointer;
-      }
-
-      .copy-download-btn:hover {
-        background: linear-gradient(135deg, rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3));
-        border-color: rgba(236, 72, 153, 0.5);
-      }
-
-      /* Circular icons with gradient */
-      .icon-circle {
-        border-radius: 50%;
-        background: linear-gradient(135deg, #9333ea, #ec4899);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-      }
-
-      /* Particles container */
-      #particles-js {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
-
-      /* Frosted card effect */
-      .frosted-card {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        background: rgba(31, 16, 69, 0.4);
-        border-radius: 0.75rem;
-        border: 1px solid rgba(147, 51, 234, 0.1);
-        transition: all 0.3s ease;
-      }
-
-      .frosted-card:hover {
-        box-shadow: 0 10px 25px -5px rgba(147, 51, 234, 0.2),
-                    0 8px 10px -6px rgba(236, 72, 153, 0.2);
-      }
-
-      .frosted-card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: 0.75rem;
-        padding: 1px;
-        background: linear-gradient(135deg, #9333ea, #ec4899);
-        -webkit-mask: 
-          linear-gradient(#fff 0 0) content-box, 
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .frosted-card:hover::after,
-      .frosted-card:active::after {
-        opacity: 1;
       }
     </style>
   </head>
-  <body class="bg-dark-950 text-gray-200 font-sans min-h-screen relative transition-colors duration-300">
-    <!-- Particles.js Background -->
-    <div id="particles-js"></div>
-
+  <body class="bg-gradient-to-br from-dark-950 via-dark-900 to-dark-850 text-gray-200 font-sans min-h-screen relative transition-colors duration-300">
     <!-- Loading Screen with ARIA live region for accessibility -->
     <div id="loadingScreen" class="fixed inset-0 bg-dark-950 z-[9999] flex flex-col items-center justify-center transition-colors duration-300" aria-live="polite">
       <div class="relative w-64 h-2 bg-dark-700 rounded-full overflow-hidden mb-4" aria-hidden="true">
-        <div id="loadingBar" class="absolute left-0 top-0 h-full w-0 rounded-full transition-all duration-1000 ease-out"></div>
+        <div id="loadingBar" class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-primary-600 to-accent-pink rounded-full transition-all duration-1000 ease-out"></div>
       </div>
-      <p class="text-primary-400 text-xl font-medium font-heading gradient-text">Loading dashboard...</p>
+      <p class="text-primary-400 text-xl font-medium font-heading">Loading dashboard...</p>
     </div>
 
     <!-- Sidebar Overlay -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden lg:hidden" aria-hidden="true"></div>
 
     <!-- Sidebar Navigation -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 glass-effect border-r border-dark-600/50 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300" aria-label="Sidebar Navigation">
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-dark-800/95 backdrop-blur-md border-r border-dark-600/50 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300" aria-label="Sidebar Navigation">
       <div class="flex flex-col h-full">
         <!-- Sidebar Header -->
         <header class="h-16 flex items-center justify-between px-6 relative">
@@ -362,7 +257,7 @@
             </svg>
           </button>
           <!-- Search Input Container -->
-          <div id="sidebarSearchContainer" class="absolute inset-x-0 top-0 h-16 glass-effect flex items-center px-4 hidden" aria-label="Search APIs">
+          <div id="sidebarSearchContainer" class="absolute inset-x-0 top-0 h-16 bg-dark-800 flex items-center px-4 hidden" aria-label="Search APIs">
             <div class="relative w-full flex items-center">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -437,66 +332,64 @@
 
         <!-- Dashboard Stats Cards -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 slideUp" style="animation-delay: 0.3s;" aria-label="Dashboard Stats">
-          <!-- API Endpoints Card -->
-          <article class="frosted-card p-6 shadow-lg relative" role="region" aria-label="API Endpoints">
+          <!-- Total APIs Card -->
+          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="Total APIs">
             <header class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-medium font-heading">API Endpoints</h3>
-              <div class="icon-circle">
-                <!-- Using a representative SVG for endpoints -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <h3 class="text-lg font-medium font-heading">Total APIs</h3>
+              <div class="p-2 bg-primary-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
               </div>
             </header>
             <div class="flex items-end">
-              <span id="totalApis" class="text-5xl font-bold gradient-text"></span>
+              <span id="totalApis" class="text-3xl font-bold">0</span>
               <span class="text-gray-400 ml-2 mb-1">endpoints</span>
             </div>
           </article>
-
-          <!-- Total Categories Card -->
-          <article class="frosted-card p-6 shadow-lg relative" role="region" aria-label="Categories">
+          <!-- Categories Card -->
+          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="Categories">
             <header class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-medium font-heading">Categories</h3>
-              <div class="icon-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <div class="p-2 bg-green-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
               </div>
             </header>
             <div class="flex items-end">
-              <span id="totalCategories" class="text-5xl font-bold gradient-text"></span>
-              <span class="text-gray-400 ml-2 mb-1">categories</span>
+              <span id="totalCategories" class="text-3xl font-bold">0</span>
+              <span class="text-gray-400 ml-2 mb-1">groups</span>
             </div>
           </article>
-
           <!-- GET Endpoints Card -->
-          <article class="frosted-card p-6 shadow-lg relative" role="region" aria-label="GET Endpoints">
+          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="GET Endpoints">
             <header class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-medium font-heading">GET Endpoints</h3>
-              <div class="icon-circle">
-                <!-- Real GET symbol as Unicode: Downward arrow -->
-                <span class="text-white text-2xl">↓</span>
+              <div class="p-2 bg-blue-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
               </div>
             </header>
             <div class="flex items-end">
-              <span id="getEndpoints" class="text-5xl font-bold gradient-text"></span>
-              <span class="text-gray-400 ml-2 mb-1">GET</span>
+              <span id="getEndpoints" class="text-3xl font-bold">0</span>
+              <span class="text-gray-400 ml-2 mb-1">endpoints</span>
             </div>
           </article>
-
           <!-- POST Endpoints Card -->
-          <article class="frosted-card p-6 shadow-lg relative" role="region" aria-label="POST Endpoints">
+          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="POST Endpoints">
             <header class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-medium font-heading">POST Endpoints</h3>
-              <div class="icon-circle">
-                <!-- Real POST symbol as Unicode: Upward arrow -->
-                <span class="text-white text-2xl">↑</span>
+              <div class="p-2 bg-amber-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
               </div>
             </header>
             <div class="flex items-end">
-              <span id="postEndpoints" class="text-5xl font-bold gradient-text"></span>
-              <span class="text-gray-400 ml-2 mb-1">POST</span>
+              <span id="postEndpoints" class="text-3xl font-bold">0</span>
+              <span class="text-gray-400 ml-2 mb-1">endpoints</span>
             </div>
           </article>
         </section>
@@ -506,7 +399,7 @@
     <!-- API Response Modal -->
     <div id="apiResponseModal" class="fixed inset-0 z-50 bg-black/70 hidden overflow-y-auto backdrop-blur-sm" role="dialog" aria-labelledby="apiResponseModalLabel" aria-modal="true">
       <div class="min-h-screen flex items-center justify-center p-4">
-        <div class="glass-effect border border-dark-600/50 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-xl">
+        <div class="bg-dark-800 border border-dark-600/50 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-xl">
           <!-- Modal Header -->
           <header class="flex justify-between items-start p-6 border-b border-dark-600/50 bg-gradient-to-r from-dark-800 to-dark-700 rounded-t-xl">
             <div>
@@ -523,9 +416,11 @@
           <div class="p-6 overflow-y-auto flex-1">
             <!-- API Endpoint Section -->
             <div class="mb-4">
+              <!-- Action buttons appear above the endpoint -->
               <div class="flex justify-end">
                 <div id="apiEndpointActions"></div>
               </div>
+              <!-- Added mt-2 for extra spacing -->
               <pre id="apiEndpoint" class="mt-2 bg-dark-900 rounded-lg p-4 text-gray-300 text-sm overflow-x-auto font-mono hidden border border-dark-600/50"></pre>
             </div>
             <!-- Query Input Section (if applicable) -->
@@ -537,9 +432,11 @@
               </div>
             </div>
             <div class="mb-4">
+              <!-- Action buttons appear above the API result -->
               <div class="flex justify-end">
                 <div id="apiResponseActions"></div>
               </div>
+              <!-- Added mt-2 for extra spacing -->
               <pre id="apiResponseContent" class="mt-2 hidden bg-dark-900 rounded-lg p-4 text-gray-300 text-sm overflow-x-auto font-mono border border-dark-600/50"></pre>
             </div>
           </div>
@@ -554,10 +451,10 @@
     </div>
 
     <!-- Notification Pop-up -->
-    <div id="notificationPopup" class="fixed top-20 right-4 z-50 w-80 glass-effect border border-dark-600/50 rounded-lg shadow-lg hidden" role="alert">
+    <div id="notificationPopup" class="fixed top-20 right-4 z-50 w-80 bg-dark-800 border border-dark-600/50 rounded-lg shadow-lg hidden glass-effect" role="alert">
       <div class="p-4">
         <div class="flex items-center justify-between mb-2">
-          <h3 class="text-lg font-semibold mb-2 font-heading gradient-text">Notifications</h3>
+          <h3 class="text-lg font-semibold mb-2 font-heading">Notifications</h3>
           <button id="markAllRead" class="text-sm text-primary-300 hover:text-primary-200 transition-colors focus:outline-none">Mark all as read</button>
         </div>
         <div id="notificationList" class="space-y-2 max-h-[300px] overflow-y-auto"></div>
@@ -608,110 +505,6 @@
       window.addEventListener('load', animateLoading);
 
       document.addEventListener('DOMContentLoaded', async () => {
-        // Initialize particles.js
-        particlesJS('particles-js', {
-          "particles": {
-            "number": {
-              "value": 80,
-              "density": {
-                "enable": true,
-                "value_area": 800
-              }
-            },
-            "color": {
-              "value": ["#9333ea", "#ec4899"]
-            },
-            "shape": {
-              "type": "circle",
-              "stroke": {
-                "width": 0,
-                "color": "#000000"
-              }
-            },
-            "opacity": {
-              "value": 0.5,
-              "random": true,
-              "anim": {
-                "enable": true,
-                "speed": 1,
-                "opacity_min": 0.1,
-                "sync": false
-              }
-            },
-            "size": {
-              "value": 5,
-              "random": true,
-              "anim": {
-                "enable": true,
-                "speed": 2,
-                "size_min": 0.1,
-                "sync": false
-              }
-            },
-            "line_linked": {
-              "enable": true,
-              "distance": 150,
-              "color": "#9333ea",
-              "opacity": 0.2,
-              "width": 1
-            },
-            "move": {
-              "enable": true,
-              "speed": 1,
-              "direction": "none",
-              "random": true,
-              "straight": false,
-              "out_mode": "out",
-              "bounce": false,
-              "attract": {
-                "enable": false,
-                "rotateX": 600,
-                "rotateY": 1200
-              }
-            }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-              "onhover": {
-                "enable": true,
-                "mode": "grab"
-              },
-              "onclick": {
-                "enable": true,
-                "mode": "push"
-              },
-              "resize": true
-            },
-            "modes": {
-              "grab": {
-                "distance": 140,
-                "line_linked": {
-                  "opacity": 0.5
-                }
-              },
-              "bubble": {
-                "distance": 400,
-                "size": 40,
-                "duration": 2,
-                "opacity": 8,
-                "speed": 3
-              },
-              "repulse": {
-                "distance": 200,
-                "duration": 0.4
-              },
-              "push": {
-                "particles_nb": 4
-              },
-              "remove": {
-                "particles_nb": 2
-              }
-            }
-          },
-          "retina_detect": true
-        });
-
         // Helper: Capitalize First Letter
         const capitalizeFirstLetter = str => str ? str.charAt(0).toUpperCase() + str.slice(1) : str;
 
@@ -780,6 +573,7 @@
               sidebarSearchToggle.classList.remove('hidden');
               sidebarSearchContainer.style.opacity = '';
               sidebarSearchContainer.style.transform = '';
+              // When search is closed, collapse all categories.
               document.querySelectorAll('.category-content').forEach(content => content.classList.remove('open'));
               document.querySelectorAll('#sidebarCategories button .category-arrow').forEach(arrow => arrow.classList.remove('open'));
             }, 200);
@@ -842,6 +636,7 @@
             if (countEl) countEl.textContent = `(${visibleItems.length})`;
             header.parentElement.style.display = visibleItems.length === 0 && searchTerm ? 'none' : '';
           });
+          // Display "No results found" if no API items are visible during search.
           const visibleItemsAll = Array.from(document.querySelectorAll('.sidebar-api-item')).filter(item => item.style.display !== 'none');
           const noResultsMsgId = "noResultsMessage";
           let noResultsMsg = document.getElementById(noResultsMsgId);
@@ -896,6 +691,7 @@
           let params = new URLSearchParams(paramsString);
           let hasParams = params.toString().length > 0;
 
+          // If query parameters exist, pre-populate the query inputs.
           if (hasParams) {
             const paramContainer = document.createElement('div');
             paramContainer.className = 'space-y-4';
@@ -912,6 +708,7 @@
               inputField.className = 'bg-dark-600 border border-dark-500 text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all';
               inputField.placeholder = `Enter ${param}...`;
               inputField.dataset.param = param;
+              // Pre-fill the value from the URL if available
               inputField.value = params.get(param) || '';
               inputField.required = true;
               inputField.addEventListener('input', () => {
@@ -927,6 +724,8 @@
             modalRefs.queryInputContainer.appendChild(paramContainer);
             modalRefs.submitBtn.classList.remove('hidden');
             modalRefs.submitBtn.disabled = true;
+
+            // Call validateInputs() once so that pre-filled values enable the button if valid.
             validateInputs();
 
             modalRefs.submitBtn.onclick = async () => {
@@ -989,6 +788,7 @@
               img.className = 'max-w-full h-auto rounded-lg';
               modalRefs.content.innerHTML = '';
               modalRefs.content.appendChild(img);
+              // Instead of a copy button, add a download button for image media.
               addDownloadButtonToContainer(apiResponseActions, imageUrl, `${apiName}.jpg`);
             } else {
               const data = await response.json();
@@ -1000,10 +800,12 @@
                 else if (/null/.test(match)) { cls = 'text-red-300'; }
                 return '<span class="' + cls + '">' + match + '</span>';
               });
+              // Add copy button for text results.
               addCopyButtonToContainer(apiResponseActions, formattedJson);
             }
             modalRefs.endpoint.textContent = apiUrl;
             modalRefs.endpoint.classList.remove('hidden');
+            // Add copy button for the endpoint URL.
             addCopyButtonToContainer(apiEndpointActions, apiUrl);
           } catch (error) {
             modalRefs.content.textContent = `Error: ${error.message}`;
@@ -1040,12 +842,12 @@
           const headerTitle = document.getElementById('header');
           const headerBadge = document.getElementById('versionHeader');
           if (window.scrollY > 0) {
-            navbar.classList.add('glass-effect', 'shadow-lg');
+            navbar.classList.add('bg-dark-800/80', 'backdrop-blur-md', 'shadow-lg');
             navbarSeparator.classList.remove('opacity-0');
             headerTitle.style.opacity = '1';
             headerBadge.style.opacity = '1';
           } else {
-            navbar.classList.remove('glass-effect', 'shadow-lg');
+            navbar.classList.remove('bg-dark-800/80', 'backdrop-blur-md', 'shadow-lg');
             navbarSeparator.classList.add('opacity-0');
             headerTitle.style.opacity = '0';
             headerBadge.style.opacity = '0';
@@ -1177,11 +979,8 @@
               if (item.method.toLowerCase() === 'post') postEndpoints++;
             });
           });
-          const totalCategories = sortedCategories.length;
-
-          // Set the stats values based on computed info
           setContent('totalApis', 'textContent', totalApis);
-          setContent('totalCategories', 'textContent', totalCategories);
+          setContent('totalCategories', 'textContent', sortedCategories.length);
           setContent('getEndpoints', 'textContent', getEndpoints);
           setContent('postEndpoints', 'textContent', postEndpoints);
 
@@ -1237,6 +1036,7 @@
             catEl.appendChild(catHeader);
             catEl.appendChild(catContent);
             sidebarCategories.appendChild(catEl);
+            // Modified behavior: Only one category open at a time
             catHeader.addEventListener('click', () => {
               const target = document.getElementById(catId);
               const arrow = catHeader.querySelector('.category-arrow');
