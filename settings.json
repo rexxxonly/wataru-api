@@ -1,11 +1,11 @@
 {
-  "name": "Wataru's Api",
+  "name": "Wataru API",
   "version": "Wataru UI",
   "description": "Simple and Easy-to-Use API Documentation",
   "header": {
     "status": "Online!",
     "imageSrc": [
-      "https://media4.giphy.com/media/l0Iy33dWjmywkCnNS/giphy.gif?cid=6c09b952p3mt40j1mgznfi9rwwtccbjl7mtc2kvfugymeinr&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g"
+      "https://cdnb.artstation.com/p/assets/images/images/066/149/065/original/killer-rabbit-media-chinese-alleyway-export.gif?1692171513"
     ],
     "imageSize": {
       "mobile": "80%",
@@ -14,7 +14,7 @@
     }
   },
   "apiSettings": {
-    "creator": "AjiroDesu"
+    "operator": "AjiroDesu"
   },
   "links": [
     {

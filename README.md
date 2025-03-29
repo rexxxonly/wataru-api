@@ -54,6 +54,8 @@ npm start
 
 Your API documentation should now be available at `http://localhost:4000`.
 
+> **Note**: The system will automatically detect your GitHub repository information and use it in the dashboard. The repository name and author will be displayed in the appropriate sections of the UI.
+
 ## Creating API Endpoints
 
 Wataru API makes it easy to create and document API endpoints. Each endpoint is defined as a Node.js module with metadata and a handler function.
@@ -114,12 +116,12 @@ You can easily customize the UI by editing the `settings.json` file. Below is a 
 
 ### Api Settings
 
-- `creator`: Displays the creator's name in the api response. and replace the "Your Name" with your code name.
+- `creator`: Displays the creator's name in the interface. Set to "auto" to use the repository owner's name.
 
 ### Links
 
 - `name`: Label for the link (e.g., "Source Code").
-- `url`: The URL to the resource. replace it with your repository link.
+- `url`: The URL to the resource. Use "auto" to automatically link to the current repository.
 
 ### Notifications
 
@@ -259,7 +261,6 @@ module.exports = { meta, onStart };
 
 This project is designed to be easily deployable on various platforms. You can host it on any platform that supports Node.js applications. Some popular options include:
 
-- **[Render](https://render.com/)**: A cloud platform for easy app deployment, scaling, and management.  
 - **[Vercel](https://vercel.com/)**: Easy deployment with minimal configuration.
 - **[Heroku](https://www.heroku.com/)**: A platform-as-a-service for deploying, managing, and scaling apps.
 - **[Netlify](https://www.netlify.com/)**: A platform for deploying static sites and serverless functions.
