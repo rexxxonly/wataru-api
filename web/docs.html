@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
   <head>
-    <!-- Basic Meta Tags -->
+    <!-- Essential Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="API Dashboard – Explore, test, and interact with APIs in a sleek, modern interface built for a superior user experience." />
     <meta name="robots" content="index, follow" />
+
+    <!-- Favicon and Preconnect -->
     <link rel="icon" href="/icon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <title>API Dashboard</title>
 
     <!-- Structured Data for SEO -->
@@ -90,27 +95,35 @@
       };
     </script>
 
-    <!-- Custom CSS for Enhanced UI/UX -->
+    <!-- Custom CSS for Advanced UI/UX -->
     <style>
-      /* Smooth custom scrollbar for WebKit */
+      /* Smooth Scrollbar for WebKit Browsers */
       ::-webkit-scrollbar { width: 6px; height: 6px; }
       ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 3px; }
       ::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.2); border-radius: 3px; }
       ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.5); }
 
-      /* Basic animations */
+      /* Basic Animation Effects */
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
       .fadeIn { animation: fadeIn 0.5s ease forwards; }
       @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
       .slideUp { animation: slideUp 0.4s ease forwards; }
+      @keyframes slideInRight { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+      .slideInRight { animation: slideInRight 0.3s ease forwards; }
 
-      /* Sidebar expand/collapse animations */
-      .category-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+      /* Sidebar Expand/Collapse Animations */
+      .category-content { 
+        max-height: 0; 
+        overflow: hidden; 
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      }
       .category-content.open { max-height: 1000px; }
-      .category-arrow { transition: transform 0.3s ease; }
+      .category-arrow { 
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      }
       .category-arrow.open { transform: rotate(90deg); }
 
-      /* Unified separator styling */
+      /* Unified Separator Styling */
       .unified-separator {
         height: 1px;
         background: linear-gradient(90deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.1));
@@ -119,12 +132,22 @@
       }
       @media (min-width: 1024px) { .unified-separator { left: 320px; } }
 
-      /* Input focus and search bar transitions */
-      #sidebarSearchContainer { transition: opacity 0.2s ease, transform 0.2s ease; }
-      #sidebarSearch:focus { box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3); }
+      /* Input Focus and Search Bar Transitions */
+      #sidebarSearchContainer { 
+        transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+      }
+      #sidebarSearch:focus { 
+        box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3); 
+      }
+      #sidebarSearch::placeholder {
+        transition: color 0.2s ease;
+      }
+      #sidebarSearch:focus::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
 
-      /* Card hover and shadow effects for depth */
-      .card-hover { transition: all 0.3s ease; border: 1px solid rgba(139, 92, 246, 0.1); position: relative; z-index: 1; overflow: hidden; }
+      /* Card Hover and Shadow Effects */
+      .card-hover { transition: all 0.3s ease; position: relative; z-index: 1; overflow: hidden; }
       .card-hover::before {
         content: '';
         position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -135,46 +158,32 @@
         transform: translateY(-3px);
         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
                     0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        border-color: rgba(139, 92, 246, 0.5);
       }
       .card-hover:hover::before { opacity: 1; }
 
-      /* Gradient text for a modern look */
+      /* Gradient Text for a Modern Look */
       .gradient-text {
-        background: linear-gradient(to right, #a78bfa, #ec4899);
+        background: linear-gradient(45deg, #9333ea, #ec4899);
         -webkit-background-clip: text; background-clip: text; color: transparent;
       }
 
-      /* Navbar header initial hidden state */
+      /* Navbar Header Hidden State */
       #header, #versionHeader { opacity: 0; transition: opacity 0.3s ease; }
 
-      /* Gradient border effect on interactive elements */
-      .gradient-border {
-        position: relative; border-radius: 0.75rem; background-clip: padding-box; z-index: 0;
-      }
-      .gradient-border::before {
-        content: '';
-        position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px;
-        z-index: -1; border-radius: inherit;
-        background: linear-gradient(135deg, #9333ea, #ec4899);
-        opacity: 0; transition: opacity 0.3s ease;
-      }
-      .gradient-border:hover::before { opacity: 1; }
-
-      /* Animated backgrounds for visual appeal */
+      /* Animated Background Effects */
       .gradient-bg { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(0, 0, 0, 0) 100%); }
       .animated-bg {
         background: linear-gradient(270deg, #18181c, #27272b);
         background-size: 200% 200%; animation: gradient-x 3s ease infinite;
       }
 
-      /* Glass effect for overlays and modals */
+      /* Glass Effect for Overlays and Modals */
       .glass-effect {
         backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
         background: rgba(24, 24, 28, 0.7); border: 1px solid rgba(255, 255, 255, 0.05);
       }
 
-      /* Gradient button with dynamic hover state */
+      /* Gradient Button with Dynamic Hover State */
       .gradient-button {
         background: linear-gradient(to right, #9333ea, #ec4899);
         transition: all 0.3s ease; position: relative; z-index: 1;
@@ -187,7 +196,7 @@
       }
       .gradient-button:hover::before { opacity: 1; }
 
-      /* Pulse effect for live status badges */
+      /* Pulse Effect for Live Status Badges */
       .pulse-badge { position: relative; }
       .pulse-badge::after {
         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -199,8 +208,12 @@
         100% { box-shadow: 0 0 0 0 rgba(147, 51, 234, 0); }
       }
 
-      /* Method badge animation on hover */
-      .method-badge { position: relative; overflow: hidden; }
+      /* Method Badge Hover Animation */
+      .method-badge { 
+        position: relative; 
+        overflow: hidden; 
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
       .method-badge::before {
         content: ''; position: absolute; top: 0; left: -100%;
         width: 100%; height: 100%;
@@ -208,15 +221,112 @@
         transition: left 0.5s ease;
       }
       .method-badge:hover::before { left: 100%; }
-
-      /* Shimmer effect for the loading bar */
-      #loadingBar { animation: shimmer 2s linear infinite; background-size: 200% 100%; }
-      @keyframes shimmer {
-        0% { background-position: 100% 0; }
-        100% { background-position: -100% 0; }
+      .method-badge:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
       }
 
-      /* Updated Action Buttons for Endpoint & Results */
+      /* Enhanced Loading Animation */
+      .loading-container {
+        position: relative;
+        width: 240px;
+        height: 4px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .loading-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 10px;
+        background: linear-gradient(90deg, 
+          rgba(139, 92, 246, 0.8), 
+          rgba(236, 72, 153, 0.8), 
+          rgba(139, 92, 246, 0.8));
+        background-size: 200% 100%;
+        animation: loading-animation 2s ease-in-out infinite;
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+      }
+
+      @keyframes loading-animation {
+        0% {
+          background-position: 100% 0;
+          box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        }
+        50% {
+          background-position: 0 0;
+          box-shadow: 0 0 20px rgba(236, 72, 153, 0.7);
+        }
+        100% {
+          background-position: 100% 0;
+          box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        }
+      }
+
+      .loading-particles {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 100px;
+        pointer-events: none;
+      }
+
+      .loading-particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(139, 92, 246, 0.6);
+        animation: particle-float 3s ease-in-out infinite;
+        opacity: 0;
+      }
+
+      @keyframes particle-float {
+        0% {
+          transform: translateY(0) scale(0);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-50px) scale(1);
+          opacity: 0;
+        }
+      }
+
+      .loading-text {
+        position: relative;
+        color: transparent;
+        background: linear-gradient(45deg, #9333ea, #ec4899, #9333ea);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: text-shine 3s linear infinite;
+        font-weight: 600;
+      }
+
+      @keyframes text-shine {
+        0% {
+          background-position: 0% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      /* Action Buttons for API Endpoint & Results */
       .copy-download-btn {
         background-color: rgba(41, 41, 46, 0.8);
         color: #fff;
@@ -227,65 +337,338 @@
         transition: background-color 0.3s ease, border-color 0.3s ease;
         cursor: pointer;
       }
+
+      /* Frosted Glass Effect for Cards & Buttons */
+      .frosted-card {
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 2rem;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+      .frosted-card h3 {
+        background: linear-gradient(45deg, #9333ea, #ec4899);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .frosted-button {
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      }
+      .frosted-button span,
+      .frosted-button,
+      .frosted-button a {
+        background: linear-gradient(45deg, #9333ea, #ec4899);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .small-frosted-card {
+        display: inline-block;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      }
+      .small-frosted-card span,
+      .small-frosted-card,
+      .small-frosted-card a {
+        background: linear-gradient(45deg, #9333ea, #ec4899);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      /* Sidebar Category Card Styling - Enhanced */
+      .category-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.75rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .category-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+      .category-header-text {
+        background: linear-gradient(45deg, #9333ea, #ec4899);
+        -webkit-background-clip: text;
+        color: transparent;
+        transition: all 0.2s ease;
+      }
+      /* Active / Hover State Overlay for Entire Card */
+      .category-card:hover::before,
+      .category-card.active::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 2px solid rgba(139, 92, 246, 0.8);
+        border-radius: inherit;
+        pointer-events: none;
+        box-shadow: inset 0 0 10px rgba(139, 92, 246, 0.2);
+      }
+      .category-card.active {
+        background: rgba(139, 92, 246, 0.08);
+      }
+
+      /* Enhanced Sidebar API Item Styling */
+      .sidebar-api-item {
+        position: relative;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0.5rem;
+        border-left: 3px solid transparent;
+        padding-left: 0.75rem !important;
+      }
+      .sidebar-api-item:hover {
+        background: rgba(139, 92, 246, 0.1);
+        border-left-color: rgba(139, 92, 246, 0.6);
+        transform: translateX(2px);
+      }
+      .sidebar-api-item:active {
+        transform: translateX(2px) scale(0.98);
+      }
+
+      /* Sidebar Scrollbar Enhancement */
+      #sidebarCategories::-webkit-scrollbar {
+        width: 4px;
+      }
+      #sidebarCategories::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.02);
+        margin: 4px 0;
+      }
+      #sidebarCategories::-webkit-scrollbar-thumb {
+        background: rgba(139, 92, 246, 0.15);
+        border-radius: 10px;
+      }
+      #sidebarCategories::-webkit-scrollbar-thumb:hover {
+        background: rgba(139, 92, 246, 0.3);
+      }
+
+      /* Sidebar Header Enhancement */
+      .sidebar-header-container {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: linear-gradient(to right, rgba(139, 92, 246, 0.05), transparent);
+      }
+      .sidebar-header-container::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, rgba(139, 92, 246, 0.3), transparent);
+      }
+
+      /* Sidebar Search Enhancement */
+      .sidebar-search-icon {
+        transition: all 0.2s ease;
+      }
+      #sidebarSearch:focus + .sidebar-search-container .sidebar-search-icon {
+        color: rgba(139, 92, 246, 0.8);
+        transform: scale(1.1);
+      }
+      .search-shortcut-badge {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.65rem;
+        padding: 2px 5px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.5);
+        pointer-events: none;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+      }
+      #sidebarSearch:focus ~ .search-shortcut-badge {
+        opacity: 0;
+      }
+
+      /* Sidebar Toggle Button Enhancement */
+      .sidebar-toggle-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      .sidebar-toggle-btn::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.3s ease;
+      }
+      .sidebar-toggle-btn:active::after {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 1;
+      }
+
+      /* Custom Icon Button Styles */
+      .icon-button { 
+        outline: none; 
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .icon-button:focus { 
+        outline: none; 
+        box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.4); 
+      }
+      .icon-button:active svg {
+        transform: scale(0.95);
+        filter: drop-shadow(0 0 3px #9333ea) drop-shadow(0 0 3px #ec4899);
+      }
+
+      /* No Results Message Enhancement */
+      .no-results-message {
+        padding: 2rem 1rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 0.75rem;
+        margin-top: 1rem;
+        border: 1px dashed rgba(255, 255, 255, 0.1);
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* Sidebar Backdrop */
+      .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 40;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+      .sidebar-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Sidebar Animation */
+      @keyframes sidebarEntrance {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      .sidebar-entrance {
+        animation: sidebarEntrance 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      /* Category Item Count Badge */
+      .category-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 6px;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7);
+        background: rgba(139, 92, 246, 0.15);
+        border-radius: 10px;
+        margin-left: 8px;
+        transition: all 0.2s ease;
+      }
+      .category-card:hover .category-count,
+      .category-card.active .category-count {
+        background: rgba(139, 92, 246, 0.3);
+        color: white;
+      }
     </style>
   </head>
   <body class="bg-gradient-to-br from-dark-950 via-dark-900 to-dark-850 text-gray-200 font-sans min-h-screen relative transition-colors duration-300">
-    <!-- Loading Screen with ARIA live region for accessibility -->
+    <!-- Enhanced Loading Screen (Accessible with ARIA live region) -->
     <div id="loadingScreen" class="fixed inset-0 bg-dark-950 z-[9999] flex flex-col items-center justify-center transition-colors duration-300" aria-live="polite">
-      <div class="relative w-64 h-2 bg-dark-700 rounded-full overflow-hidden mb-4" aria-hidden="true">
-        <div id="loadingBar" class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-primary-600 to-accent-pink rounded-full transition-all duration-1000 ease-out"></div>
+      <div class="loading-container" aria-hidden="true">
+        <div id="loadingBar" class="loading-bar"></div>
       </div>
-      <p class="text-primary-400 text-xl font-medium font-heading">Loading dashboard...</p>
+      <div class="loading-particles">
+        <!-- Particles will be added via JavaScript -->
+      </div>
+      <p class="loading-text text-xl font-medium font-heading">Loading dashboard...</p>
     </div>
 
-    <!-- Sidebar Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden lg:hidden" aria-hidden="true"></div>
+    <!-- Sidebar Backdrop with Blur Effect -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" aria-hidden="true"></div>
 
-    <!-- Sidebar Navigation -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-dark-800/95 backdrop-blur-md border-r border-dark-600/50 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300" aria-label="Sidebar Navigation">
+    <!-- Sidebar Navigation - Enhanced -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-dark-800/95 backdrop-blur-md border-r border-dark-600/50 z-50 transform -translate-x-full lg:translate-x-0 transition-all duration-300 shadow-xl" aria-label="Sidebar Navigation">
       <div class="flex flex-col h-full">
-        <!-- Sidebar Header -->
-        <header class="h-16 flex items-center justify-between px-6 relative">
-          <a href="#" class="flex items-center" aria-label="Dashboard Home">
-            <span id="sidebarHeader" class="text-xl font-semibold gradient-text font-heading"></span>
-            <div id="sidebarVersion" class="ml-2 bg-primary-900/50 text-primary-300 px-2 py-0.5 text-xs rounded-full"></div>
+        <!-- Sidebar Header - Enhanced -->
+        <header class="sidebar-header-container h-16 flex items-center justify-between px-6 relative">
+          <a href="#" class="flex items-center group" aria-label="Dashboard Home">
+            <span id="sidebarHeader" class="text-xl font-semibold gradient-text font-heading transition-all duration-300 group-hover:opacity-80"></span>
+            <div id="sidebarVersion" class="ml-2 bg-primary-900/50 text-primary-300 px-2 py-0.5 text-xs rounded-full transition-all duration-300 group-hover:bg-primary-800/60"></div>
           </a>
-          <!-- Sidebar Search Toggle -->
-          <button id="sidebarSearchToggle" class="p-2 rounded-full hover:bg-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors" aria-label="Open search">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <!-- Sidebar Search Toggle - Enhanced -->
+          <button id="sidebarSearchToggle" class="p-2 rounded-full hover:bg-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-300 active:scale-95" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
-          <!-- Search Input Container -->
-          <div id="sidebarSearchContainer" class="absolute inset-x-0 top-0 h-16 bg-dark-800 flex items-center px-4 hidden" aria-label="Search APIs">
+
+          <!-- Sidebar Search Container - Enhanced -->
+          <div id="sidebarSearchContainer" class="absolute inset-x-0 top-0 h-16 bg-dark-800 flex items-center px-4 hidden z-10" aria-label="Search APIs">
             <div class="relative w-full flex items-center">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none sidebar-search-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 sidebar-search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
               <input type="text" id="sidebarSearch" class="w-full h-10 pl-10 pr-10 py-2 bg-dark-600 border-0 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all" placeholder="Search APIs..." aria-label="Search APIs">
-              <button id="sidebarSearchClear" class="absolute right-2 p-2 rounded-full text-gray-400 hover:text-gray-200 hidden focus:outline-none" aria-label="Clear search">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <button id="sidebarSearchCancel" class="ml-4 text-white font-medium focus:outline-none">Cancel</button>
+              <span class="search-shortcut-badge">⌘K</span>
+              <button id="sidebarSearchClear" class="absolute right-2 p-2 rounded-full text-gray-400 hover:text-gray-200 hidden focus:outline-none transition-all duration-200 hover:bg-dark-500" aria-label="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke  class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-          <div class="unified-separator"></div>
-        </header>
+          <button id="sidebarSearchCancel" class="ml-4 text-white font-medium focus:outline-none hover:text-primary-300 transition-colors duration-200">Cancel</button>
+        </div>
+      </header>
 
-        <!-- Sidebar Categories Navigation -->
-        <nav id="sidebarCategories" class="flex-1 overflow-y-auto px-4 mt-4 pb-6" aria-label="API Categories"></nav>
+      <!-- Sidebar Categories Container - Enhanced -->
+      <nav id="sidebarCategories" class="flex-1 overflow-y-auto px-4 py-4 space-y-2" aria-label="API Categories"></nav>
+
+      <!-- Sidebar Footer - Simplified (removed collapse button) -->
+      <div class="p-4 border-t border-dark-600/50 bg-dark-700/30">
+        <div class="flex items-center justify-center">
+          <div class="text-xs text-gray-400">
+            <span id="totalApiCount">0</span> APIs in <span id="totalCategoryCount">0</span> categories
+          </div>
+        </div>
       </div>
-    </aside>
+    </div>
+  </aside>
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 inset-x-0 z-30 transition-all duration-300" aria-label="Main Navigation">
       <div class="container mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center">
-          <button id="sidebarToggle" class="p-2 mr-4 rounded-full hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors lg:hidden" aria-label="Toggle sidebar">
+          <button id="sidebarToggle" class="sidebar-toggle-btn icon-button p-2 mr-4 rounded-full hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors lg:hidden" aria-label="Toggle sidebar">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -296,7 +679,7 @@
           </a>
         </div>
         <div class="flex items-center">
-          <button id="notificationToggle" class="p-2 rounded-full hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors relative" aria-label="Notifications">
+          <button id="notificationToggle" class="icon-button p-2 rounded-full hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors relative" aria-label="Notifications">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
@@ -326,6 +709,7 @@
               <span class="inline-block w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" aria-hidden="true"></span>
               <span id="headerStatusText"></span>
             </div>
+            <!-- External Links using Small Frosted Card Style -->
             <div id="apiLinks" class="flex flex-wrap gap-4 justify-center"></div>
           </div>
         </section>
@@ -333,7 +717,7 @@
         <!-- Dashboard Stats Cards -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 slideUp" style="animation-delay: 0.3s;" aria-label="Dashboard Stats">
           <!-- Total APIs Card -->
-          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="Total APIs">
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="Total APIs">
             <header class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-medium font-heading">Total APIs</h3>
               <div class="p-2 bg-primary-900/30 rounded-md">
@@ -348,9 +732,9 @@
             </div>
           </article>
           <!-- Categories Card -->
-          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="Categories">
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="Categories">
             <header class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-medium font-heading">Categories</h3>
+              <h3 class="text-lg font-medium font-heading category-header-text">Categories</h3>
               <div class="p-2 bg-green-900/30 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -363,7 +747,7 @@
             </div>
           </article>
           <!-- GET Endpoints Card -->
-          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="GET Endpoints">
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="GET Endpoints">
             <header class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-medium font-heading">GET Endpoints</h3>
               <div class="p-2 bg-blue-900/30 rounded-md">
@@ -378,7 +762,7 @@
             </div>
           </article>
           <!-- POST Endpoints Card -->
-          <article class="bg-dark-700 rounded-xl p-6 shadow-lg card-hover gradient-border" role="region" aria-label="POST Endpoints">
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="POST Endpoints">
             <header class="flex items-center justify-between mb-4">
               <h3 class="text-lg font-medium font-heading">POST Endpoints</h3>
               <div class="p-2 bg-amber-900/30 rounded-md">
@@ -416,11 +800,7 @@
           <div class="p-6 overflow-y-auto flex-1">
             <!-- API Endpoint Section -->
             <div class="mb-4">
-              <!-- Action buttons appear above the endpoint -->
-              <div class="flex justify-end">
-                <div id="apiEndpointActions"></div>
-              </div>
-              <!-- Added mt-2 for extra spacing -->
+              <div class="flex justify-end" id="apiEndpointActions"></div>
               <pre id="apiEndpoint" class="mt-2 bg-dark-900 rounded-lg p-4 text-gray-300 text-sm overflow-x-auto font-mono hidden border border-dark-600/50"></pre>
             </div>
             <!-- Query Input Section (if applicable) -->
@@ -432,11 +812,7 @@
               </div>
             </div>
             <div class="mb-4">
-              <!-- Action buttons appear above the API result -->
-              <div class="flex justify-end">
-                <div id="apiResponseActions"></div>
-              </div>
-              <!-- Added mt-2 for extra spacing -->
+              <div class="flex justify-end" id="apiResponseActions"></div>
               <pre id="apiResponseContent" class="mt-2 hidden bg-dark-900 rounded-lg p-4 text-gray-300 text-sm overflow-x-auto font-mono border border-dark-600/50"></pre>
             </div>
           </div>
@@ -463,10 +839,8 @@
 
     <!-- Main JavaScript for Interactivity -->
     <script>
-      /* Helper functions for Copy/Download actions placed in action containers */
-      function clearActionButtons(container) {
-        container.innerHTML = '';
-      }
+      /* Helper functions for copy/download actions */
+      function clearActionButtons(container) { container.innerHTML = ''; }
       function addCopyButtonToContainer(container, textToCopy) {
         clearActionButtons(container);
         const btn = document.createElement('button');
@@ -493,25 +867,44 @@
         container.appendChild(btn);
       }
 
-      // Loading Animation for Initial Page Load
+      // Enhanced Loading Animation
       function animateLoading() {
         const loadingBar = document.getElementById('loadingBar');
+        const loadingParticles = document.querySelector('.loading-particles');
+
+        // Create particles
+        for (let i = 0; i < 15; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'loading-particle';
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.animationDelay = `${Math.random() * 2}s`;
+          particle.style.width = `${Math.random() * 4 + 2}px`;
+          particle.style.height = particle.style.width;
+          particle.style.background = `rgba(${Math.random() * 100 + 139}, ${Math.random() * 50 + 92}, ${Math.random() * 100 + 146}, ${Math.random() * 0.5 + 0.3})`;
+          loadingParticles.appendChild(particle);
+        }
+
+        // Animate loading bar
         let width = 0;
         const interval = setInterval(() => {
-          if (width >= 100) clearInterval(interval);
-          else { width++; loadingBar.style.width = width + '%'; }
+          if (width >= 100) {
+            clearInterval(interval);
+          } else {
+            width += 0.5;
+            loadingBar.style.width = width + '%';
+          }
         }, 20);
       }
       window.addEventListener('load', animateLoading);
 
       document.addEventListener('DOMContentLoaded', async () => {
-        // Helper: Capitalize First Letter
+        // Capitalize first letter helper
         const capitalizeFirstLetter = str => str ? str.charAt(0).toUpperCase() + str.slice(1) : str;
 
-        // DOM Elements
+        // DOM Element references
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarBackdrop = document.getElementById('sidebarBackdrop');
         const sidebarSearchContainer = document.getElementById('sidebarSearchContainer');
         const sidebarSearchToggle = document.getElementById('sidebarSearchToggle');
         const sidebarSearch = document.getElementById('sidebarSearch');
@@ -519,6 +912,8 @@
         const sidebarSearchCancel = document.getElementById('sidebarSearchCancel');
         const navbar = document.getElementById('navbar');
         const navbarSeparator = document.getElementById('navbarSeparator');
+        const totalApiCount = document.getElementById('totalApiCount');
+        const totalCategoryCount = document.getElementById('totalCategoryCount');
 
         // Notification Elements
         const notificationToggle = document.getElementById('notificationToggle');
@@ -527,13 +922,13 @@
         const notificationList = document.getElementById('notificationList');
         const markAllReadButton = document.getElementById('markAllRead');
 
-        // Modal Elements for API endpoint and response actions
+        // Modal Elements for API response
         const apiEndpoint = document.getElementById('apiEndpoint');
         const apiEndpointActions = document.getElementById('apiEndpointActions');
         const apiResponseContent = document.getElementById('apiResponseContent');
         const apiResponseActions = document.getElementById('apiResponseActions');
 
-        // Reset Sidebar State – Collapse search & all categories
+        // Reset Sidebar State
         function resetSidebar() {
           sidebarSearchContainer.classList.add('hidden');
           sidebarSearchToggle.classList.remove('hidden');
@@ -543,29 +938,36 @@
           document.querySelectorAll('.category-content').forEach(content => content.classList.remove('open'));
           document.querySelectorAll('#sidebarCategories button .category-arrow').forEach(arrow => arrow.classList.remove('open'));
           document.querySelectorAll('#sidebarCategories > div').forEach(div => { div.style.display = ''; });
+          document.querySelectorAll('.category-card').forEach(card => card.classList.remove('active'));
         }
 
-        // Toggle Sidebar Visibility
+        // Toggle Sidebar - Enhanced
         const toggleSidebar = () => {
           const isOpen = !sidebar.classList.contains('-translate-x-full');
           if (isOpen) {
             sidebar.classList.add('-translate-x-full');
-            sidebarOverlay.classList.add('hidden');
+            sidebarBackdrop.classList.remove('active');
             document.body.classList.remove('overflow-hidden');
             resetSidebar();
           } else {
             sidebar.classList.remove('-translate-x-full');
-            sidebarOverlay.classList.remove('hidden');
+            sidebar.classList.add('sidebar-entrance');
+            sidebarBackdrop.classList.add('active');
             if (window.innerWidth < 1024) document.body.classList.add('overflow-hidden');
+            setTimeout(() => {
+              sidebar.classList.remove('sidebar-entrance');
+            }, 300);
           }
         };
         sidebarToggle.addEventListener('click', toggleSidebar);
-        sidebarOverlay.addEventListener('click', toggleSidebar);
+        sidebarBackdrop.addEventListener('click', toggleSidebar);
 
-        // Toggle Sidebar Search Input
+        // Toggle Sidebar Search Input (Replacing "Cancel" with "Close" when closing)
         const toggleSearch = () => {
           const isVisible = !sidebarSearchContainer.classList.contains('hidden');
           if (isVisible) {
+            // Change button text to "Close" when closing search
+            sidebarSearchCancel.textContent = "Close";
             sidebarSearchContainer.style.opacity = '0';
             sidebarSearchContainer.style.transform = 'translateY(-10px)';
             setTimeout(() => {
@@ -573,11 +975,13 @@
               sidebarSearchToggle.classList.remove('hidden');
               sidebarSearchContainer.style.opacity = '';
               sidebarSearchContainer.style.transform = '';
-              // When search is closed, collapse all categories.
+              // Collapse all categories when search is closed.
               document.querySelectorAll('.category-content').forEach(content => content.classList.remove('open'));
               document.querySelectorAll('#sidebarCategories button .category-arrow').forEach(arrow => arrow.classList.remove('open'));
             }, 200);
           } else {
+            // Restore button text to "Cancel" when opening search
+            sidebarSearchCancel.textContent = "Cancel";
             sidebarSearchContainer.classList.remove('hidden');
             sidebarSearchToggle.classList.add('hidden');
             sidebarSearchContainer.style.opacity = '0';
@@ -590,8 +994,17 @@
           }
         };
         sidebarSearchToggle.addEventListener('click', toggleSearch);
-        sidebarSearchCancel.addEventListener('click', () => { toggleSearch(); sidebarSearch.value = ''; sidebarSearch.dispatchEvent(new Event('input')); });
-        sidebarSearchClear.addEventListener('click', () => { sidebarSearch.value = ''; sidebarSearch.dispatchEvent(new Event('input')); sidebarSearch.focus(); sidebarSearchClear.classList.add('hidden'); });
+        sidebarSearchCancel.addEventListener('click', () => {
+          toggleSearch();
+          sidebarSearch.value = '';
+          sidebarSearch.dispatchEvent(new Event('input'));
+        });
+        sidebarSearchClear.addEventListener('click', () => { 
+          sidebarSearch.value = ''; 
+          sidebarSearch.dispatchEvent(new Event('input')); 
+          sidebarSearch.focus(); 
+          sidebarSearchClear.classList.add('hidden'); 
+        });
 
         // Keyboard Shortcuts for Search and Escape
         document.addEventListener('keydown', (e) => {
@@ -607,55 +1020,81 @@
           }
         });
 
-        // Sidebar Search Filtering with No Results Message
+        // Sidebar Search Filtering with "No Results" Message - Enhanced
         sidebarSearch.addEventListener('input', () => {
           const searchTerm = sidebarSearch.value.toLowerCase();
           const apiItems = document.querySelectorAll('.sidebar-api-item');
           const categoryHeaders = document.querySelectorAll('#sidebarCategories button');
           sidebarSearchClear.classList.toggle('hidden', searchTerm.length === 0);
+
+          // Count visible items for statistics
+          let visibleItemsCount = 0;
+
           apiItems.forEach(item => {
             const name = item.dataset.apiName.toLowerCase();
             const desc = item.dataset.apiDesc.toLowerCase();
             if (name.includes(searchTerm) || desc.includes(searchTerm)) {
               item.style.display = '';
+              visibleItemsCount++;
               const categoryContent = item.closest('.category-content');
               if (categoryContent && !categoryContent.classList.contains('open')) {
                 categoryContent.classList.add('open');
                 const categoryHeader = document.querySelector(`#sidebarCategories [data-target="${categoryContent.id}"]`);
-                if (categoryHeader) categoryHeader.querySelector('.category-arrow').classList.add('open');
+                if (categoryHeader) {
+                  categoryHeader.querySelector('.category-arrow').classList.add('open');
+                  categoryHeader.closest('.category-card').classList.add('active');
+                }
               }
             } else {
               item.style.display = 'none';
             }
           });
+
+          // Update category counts and visibility
+          let visibleCategoriesCount = 0;
           categoryHeaders.forEach(header => {
             const categoryId = header.dataset.target;
             const content = document.getElementById(categoryId);
             const visibleItems = Array.from(content.querySelectorAll('.sidebar-api-item')).filter(item => item.style.display !== 'none');
-            const countEl = header.querySelector('span:last-child');
-            if (countEl) countEl.textContent = `(${visibleItems.length})`;
-            header.parentElement.style.display = visibleItems.length === 0 && searchTerm ? 'none' : '';
+            const countEl = header.querySelector('.category-count');
+            if (countEl) countEl.textContent = visibleItems.length;
+
+            const categoryCard = header.closest('.category-card');
+            if (visibleItems.length === 0 && searchTerm) {
+              categoryCard.style.display = 'none';
+            } else {
+              categoryCard.style.display = '';
+              visibleCategoriesCount++;
+            }
           });
-          // Display "No results found" if no API items are visible during search.
-          const visibleItemsAll = Array.from(document.querySelectorAll('.sidebar-api-item')).filter(item => item.style.display !== 'none');
+
+          // Update total counts in footer
+          if (totalApiCount) totalApiCount.textContent = visibleItemsCount;
+          if (totalCategoryCount) totalCategoryCount.textContent = visibleCategoriesCount;
+
+          // Show "No Results" message if needed
           const noResultsMsgId = "noResultsMessage";
           let noResultsMsg = document.getElementById(noResultsMsgId);
-          if (visibleItemsAll.length === 0 && searchTerm.trim() !== "") {
+          if (visibleItemsCount === 0 && searchTerm.trim() !== "") {
             if (!noResultsMsg) {
               noResultsMsg = document.createElement('div');
               noResultsMsg.id = noResultsMsgId;
-              noResultsMsg.textContent = "No results found.";
-              noResultsMsg.className = "text-gray-400 text-center mt-4";
+              noResultsMsg.className = "no-results-message";
+              noResultsMsg.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <p class="text-lg font-medium mb-1">No results found</p>
+                <p class="text-sm">Try adjusting your search terms</p>
+              `;
               document.getElementById('sidebarCategories').appendChild(noResultsMsg);
             }
           } else {
-            if (noResultsMsg) {
-              noResultsMsg.remove();
-            }
+            if (noResultsMsg) noResultsMsg.remove();
           }
         });
 
-        // API Item Click Handler: Opens Modal and Loads API Details
+        // API Item Click Handler: Opens Modal with API Details
         document.addEventListener('click', event => {
           const apiItem = event.target.closest('.sidebar-api-item');
           if (apiItem) handleApiClick(apiItem.dataset);
@@ -691,7 +1130,7 @@
           let params = new URLSearchParams(paramsString);
           let hasParams = params.toString().length > 0;
 
-          // If query parameters exist, pre-populate the query inputs.
+          // Pre-populate Query Inputs if Parameters Exist
           if (hasParams) {
             const paramContainer = document.createElement('div');
             paramContainer.className = 'space-y-4';
@@ -708,7 +1147,6 @@
               inputField.className = 'bg-dark-600 border border-dark-500 text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all';
               inputField.placeholder = `Enter ${param}...`;
               inputField.dataset.param = param;
-              // Pre-fill the value from the URL if available
               inputField.value = params.get(param) || '';
               inputField.required = true;
               inputField.addEventListener('input', () => {
@@ -724,10 +1162,7 @@
             modalRefs.queryInputContainer.appendChild(paramContainer);
             modalRefs.submitBtn.classList.remove('hidden');
             modalRefs.submitBtn.disabled = true;
-
-            // Call validateInputs() once so that pre-filled values enable the button if valid.
             validateInputs();
-
             modalRefs.submitBtn.onclick = async () => {
               const inputs = modalRefs.queryInputContainer.querySelectorAll('input');
               let isValid = true;
@@ -788,7 +1223,6 @@
               img.className = 'max-w-full h-auto rounded-lg';
               modalRefs.content.innerHTML = '';
               modalRefs.content.appendChild(img);
-              // Instead of a copy button, add a download button for image media.
               addDownloadButtonToContainer(apiResponseActions, imageUrl, `${apiName}.jpg`);
             } else {
               const data = await response.json();
@@ -800,12 +1234,10 @@
                 else if (/null/.test(match)) { cls = 'text-red-300'; }
                 return '<span class="' + cls + '">' + match + '</span>';
               });
-              // Add copy button for text results.
               addCopyButtonToContainer(apiResponseActions, formattedJson);
             }
             modalRefs.endpoint.textContent = apiUrl;
             modalRefs.endpoint.classList.remove('hidden');
-            // Add copy button for the endpoint URL.
             addCopyButtonToContainer(apiEndpointActions, apiUrl);
           } catch (error) {
             modalRefs.content.textContent = `Error: ${error.message}`;
@@ -816,7 +1248,7 @@
           }
         }
 
-        // Modal Close Button
+        // Modal Close Button Handler
         document.getElementById('closeModalBtn').addEventListener('click', () => {
           document.getElementById('apiResponseModal').classList.add('hidden');
         });
@@ -830,7 +1262,7 @@
         notificationPopup.addEventListener('click', (e) => { e.stopPropagation(); });
         document.addEventListener('click', (e) => { if (!notificationPopup.contains(e.target) && e.target !== notificationToggle) notificationPopup.classList.add('hidden'); });
 
-        // Mark All as Read Functionality
+        // Mark All as Read
         markAllReadButton.addEventListener('click', () => {
           notifications = notifications.map(n => ({ ...n, read: true }));
           saveNotifications();
@@ -838,6 +1270,7 @@
           renderNotifications();
         });
 
+        // Update Navbar Appearance on Scroll
         function updateNavbarAppearance() {
           const headerTitle = document.getElementById('header');
           const headerBadge = document.getElementById('versionHeader');
@@ -856,7 +1289,7 @@
         window.addEventListener('scroll', updateNavbarAppearance);
         updateNavbarAppearance();
 
-        // Notifications: Load and Merge Local Storage with Settings
+        // Notifications: Local Storage Integration
         let notifications = [];
         const STORAGE_KEY = 'dashboard_notifications';
         function loadNotifications() {
@@ -902,7 +1335,7 @@
           });
         }
 
-        // Load settings and API info
+        // Load Settings and API Information
         try {
           const settings = await fetch('/settings.json').then(r => r.json());
           const apiInfo = await fetch('/api/info').then(r => r.json());
@@ -949,12 +1382,12 @@
             settings.links.forEach(({ url, name }) => {
               const link = document.createElement('a');
               link.href = url; link.textContent = name; link.target = '_blank';
-              link.className = 'text-primary-400 hover:text-primary-300 transition-colors border border-dark-600 bg-dark-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-dark-600 hover:border-primary-500/50 hover:shadow-glow-sm';
+              link.className = 'small-frosted-card';
               apiLinksContainer.appendChild(link);
             });
           }
 
-          // Merge Notifications with Local Storage
+          // Merge Notifications from Settings and Local Storage
           const saved = loadNotifications();
           if (settings.notifications && Array.isArray(settings.notifications)) {
             const map = new Map();
@@ -984,22 +1417,29 @@
           setContent('getEndpoints', 'textContent', getEndpoints);
           setContent('postEndpoints', 'textContent', postEndpoints);
 
-          // Render Sidebar Categories and API Items
+          // Update sidebar footer counters
+          if (totalApiCount) totalApiCount.textContent = totalApis;
+          if (totalCategoryCount) totalCategoryCount.textContent = sortedCategories.length;
+
+          // Render Sidebar Categories as Card-Style Blocks with Active Hover/State Mark - Enhanced
           const sidebarCategories = document.getElementById('sidebarCategories');
+          sidebarCategories.innerHTML = '';
           sortedCategories.forEach((category, idx) => {
             const catId = `category-${idx}`;
-            const catEl = document.createElement('div'); 
-            catEl.className = 'mb-4';
+            const catCard = document.createElement('div');
+            catCard.className = 'category-card slideInRight';
+            catCard.style.animationDelay = `${idx * 0.05}s`;
+
             const catHeader = document.createElement('button');
-            catHeader.className = 'w-full flex items-center justify-between p-2 rounded-md hover:bg-dark-600 focus:outline-none transition-colors text-left';
+            catHeader.className = 'w-full flex items-center justify-between rounded-md focus:outline-none transition-colors text-left';
             catHeader.dataset.target = catId;
             const capName = capitalizeFirstLetter(category.name);
             catHeader.innerHTML = `
               <div class="flex items-center">
-                <span class="font-medium">${capName}</span>
-                <span class="ml-2 text-xs text-gray-400">(${category.items.length})</span>
+                <span class="category-header-text font-medium">${capName}</span>
+                <span class="category-count">${category.items.length}</span>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 category-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 category-arrow text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             `;
@@ -1033,21 +1473,30 @@
               `;
               catContent.appendChild(itemEl);
             });
-            catEl.appendChild(catHeader);
-            catEl.appendChild(catContent);
-            sidebarCategories.appendChild(catEl);
-            // Modified behavior: Only one category open at a time
+            catCard.appendChild(catHeader);
+            catCard.appendChild(catContent);
+            sidebarCategories.appendChild(catCard);
+
+            // Only one category open at a time and mark active card on tap/touch.
             catHeader.addEventListener('click', () => {
+              // Remove active mark from all category cards.
+              document.querySelectorAll('.category-card').forEach(card => card.classList.remove('active'));
+
               const target = document.getElementById(catId);
               const arrow = catHeader.querySelector('.category-arrow');
               if (!target.classList.contains('open')) {
+                // Close any open categories.
                 document.querySelectorAll('.category-content').forEach(content => content.classList.remove('open'));
                 document.querySelectorAll('#sidebarCategories button .category-arrow').forEach(a => a.classList.remove('open'));
                 target.classList.add('open');
                 arrow.classList.add('open');
+                // Mark this category card as active.
+                catCard.classList.add('active');
               } else {
                 target.classList.remove('open');
                 arrow.classList.remove('open');
+                // Remove active state if re-tapping an open card.
+                catCard.classList.remove('active');
               }
             });
           });
