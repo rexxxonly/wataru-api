@@ -597,250 +597,6 @@
         background: rgba(139, 92, 246, 0.3);
         color: white;
       }
-
-      /* Navigation Menu Styles */
-      .nav-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 280px;
-        height: 100vh;
-        background: rgba(24, 24, 28, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        z-index: 60;
-        transform: translateX(-100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
-        overflow-y: auto;
-      }
-      .nav-menu.active {
-        transform: translateX(0);
-      }
-      .nav-menu-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        z-index: 55;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-      .nav-menu-backdrop.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .nav-menu-item {
-        display: flex;
-        align-items: center;
-        padding: 1rem 1.5rem;
-        color: rgba(255, 255, 255, 0.8);
-        transition: all 0.2s ease;
-        border-left: 3px solid transparent;
-      }
-      .nav-menu-item:hover, .nav-menu-item.active {
-        background: rgba(139, 92, 246, 0.1);
-        color: white;
-        border-left-color: rgba(139, 92, 246, 0.6);
-      }
-      .nav-menu-item svg {
-        margin-right: 1rem;
-        color: rgba(139, 92, 246, 0.8);
-      }
-
-      /* Page Transition Animation */
-      .page-container {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-      }
-      .page-container.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Home Page Categories Grid */
-      .categories-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-      .category-grid-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 1rem;
-        padding: 1.5rem;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      .category-grid-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(139, 92, 246, 0.3);
-      }
-      .category-grid-header {
-        margin-bottom: 1rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .category-grid-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(45deg, #9333ea, #ec4899);
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-      .category-grid-count {
-        font-size: 0.875rem;
-        color: rgba(255, 255, 255, 0.6);
-      }
-      .category-grid-items {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .category-grid-item {
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .category-grid-item:hover {
-        background: rgba(139, 92, 246, 0.1);
-      }
-      .category-grid-item-name {
-        font-size: 0.875rem;
-        color: rgba(255, 255, 255, 0.8);
-      }
-      .category-grid-item-method {
-        font-size: 0.75rem;
-        padding: 0.125rem 0.5rem;
-        border-radius: 0.25rem;
-        text-transform: uppercase;
-      }
-
-      /* Documentation Page Styles */
-      .doc-section {
-        margin-bottom: 2rem;
-      }
-      .doc-section-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        background: linear-gradient(45deg, #9333ea, #ec4899);
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-      .doc-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 1rem;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-      }
-      .doc-card:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(139, 92, 246, 0.3);
-        transform: translateY(-2px);
-      }
-      .doc-card-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: white;
-      }
-      .doc-card-description {
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 1rem;
-        line-height: 1.6;
-      }
-      .doc-code {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 0.5rem;
-        padding: 1rem;
-        font-family: monospace;
-        overflow-x: auto;
-        margin: 1rem 0;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .doc-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1rem 0;
-      }
-      .doc-table th {
-        text-align: left;
-        padding: 0.75rem 1rem;
-        background: rgba(139, 92, 246, 0.1);
-        color: white;
-        font-weight: 600;
-      }
-      .doc-table td {
-        padding: 0.75rem 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.7);
-      }
-      .doc-table tr:hover td {
-        background: rgba(255, 255, 255, 0.05);
-      }
-      
-      /* Feature Card Styles */
-      .feature-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 1rem;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-      }
-      .feature-card:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(139, 92, 246, 0.3);
-        transform: translateY(-2px);
-      }
-      .feature-icon {
-        width: 3rem;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 0.75rem;
-        margin-bottom: 1rem;
-      }
-      .feature-title {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-      }
-
-      body.modal-open {
-        overflow: hidden;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        inset: 0;
-      }
-
-      /* Modal Animation */
-      #apiResponseModal {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-      #apiResponseModal.visible {
-        opacity: 1;
-      }
     </style>
   </head>
   <body class="bg-gradient-to-br from-dark-950 via-dark-900 to-dark-850 text-gray-200 font-sans min-h-screen relative transition-colors duration-300">
@@ -855,54 +611,64 @@
       <p class="loading-text text-xl font-medium font-heading">Loading dashboard...</p>
     </div>
 
-    <!-- Navigation Menu Backdrop -->
-    <div id="navMenuBackdrop" class="nav-menu-backdrop" aria-hidden="true"></div>
+    <!-- Sidebar Backdrop with Blur Effect -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" aria-hidden="true"></div>
 
-    <!-- Navigation Menu -->
-    <nav id="navMenu" class="nav-menu" aria-label="Main Navigation">
-      <div class="py-6 px-4 border-b border-dark-600/50">
-        <div class="flex items-center justify-between mb-6">
-          <div class="flex items-center">
-            <span class="text-xl font-semibold gradient-text font-heading">API Dashboard</span>
-            <div class="ml-2 bg-primary-900/50 text-primary-300 px-2 py-0.5 text-xs rounded-full">v1.0</div>
-          </div>
-          <button id="closeNavMenu" class="p-2 rounded-full hover:bg-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all" aria-label="Close menu">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    <!-- Sidebar Navigation - Enhanced -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-dark-800/95 backdrop-blur-md border-r border-dark-600/50 z-50 transform -translate-x-full lg:translate-x-0 transition-all duration-300 shadow-xl" aria-label="Sidebar Navigation">
+      <div class="flex flex-col h-full">
+        <!-- Sidebar Header - Enhanced -->
+        <header class="sidebar-header-container h-16 flex items-center justify-between px-6 relative">
+          <a href="#" class="flex items-center group" aria-label="Dashboard Home">
+            <span id="sidebarHeader" class="text-xl font-semibold gradient-text font-heading transition-all duration-300 group-hover:opacity-80"></span>
+            <div id="sidebarVersion" class="ml-2 bg-primary-900/50 text-primary-300 px-2 py-0.5 text-xs rounded-full transition-all duration-300 group-hover:bg-primary-800/60"></div>
+          </a>
+          <!-- Sidebar Search Toggle - Enhanced -->
+          <button id="sidebarSearchToggle" class="p-2 rounded-full hover:bg-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-300 active:scale-95" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
+
+          <!-- Sidebar Search Container - Enhanced -->
+          <div id="sidebarSearchContainer" class="absolute inset-x-0 top-0 h-16 bg-dark-800 flex items-center px-4 hidden z-10" aria-label="Search APIs">
+            <div class="relative w-full flex items-center">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none sidebar-search-container">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 sidebar-search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input type="text" id="sidebarSearch" class="w-full h-10 pl-10 pr-10 py-2 bg-dark-600 border-0 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all" placeholder="Search APIs..." aria-label="Search APIs">
+              <span class="search-shortcut-badge">⌘K</span>
+              <button id="sidebarSearchClear" class="absolute right-2 p-2 rounded-full text-gray-400 hover:text-gray-200 hidden focus:outline-none transition-all duration-200 hover:bg-dark-500" aria-label="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke  class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <button id="sidebarSearchCancel" class="ml-4 text-white font-medium focus:outline-none hover:text-primary-300 transition-colors duration-200">Cancel</button>
         </div>
-        <div class="text-sm text-gray-400 mb-4">
-          Explore and interact with APIs in a sleek, modern interface
+      </header>
+
+      <!-- Sidebar Categories Container - Enhanced -->
+      <nav id="sidebarCategories" class="flex-1 overflow-y-auto px-4 py-4 space-y-2" aria-label="API Categories"></nav>
+
+      <!-- Sidebar Footer - Simplified (removed collapse button) -->
+      <div class="p-4 border-t border-dark-600/50 bg-dark-700/30">
+        <div class="flex items-center justify-center">
+          <div class="text-xs text-gray-400">
+            <span id="totalApiCount">0</span> APIs in <span id="totalCategoryCount">0</span> categories
+          </div>
         </div>
       </div>
-      <div class="py-4">
-        <a href="#" class="nav-menu-item active" data-page="home">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-          </svg>
-          Home
-        </a>
-        <a href="#" class="nav-menu-item" data-page="stats">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          Statistics
-        </a>
-        <a href="#" class="nav-menu-item" data-page="documentation">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          Documentation
-        </a>
-      </div>
-    </nav>
+    </div>
+  </aside>
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 inset-x-0 z-30 transition-all duration-300" aria-label="Main Navigation">
       <div class="container mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center">
-          <button id="navMenuToggle" class="sidebar-toggle-btn icon-button p-2 mr-4 rounded-full hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors" aria-label="Toggle menu">
+          <button id="sidebarToggle" class="sidebar-toggle-btn icon-button p-2 mr-4 rounded-full hover:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors lg:hidden" aria-label="Toggle sidebar">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -925,311 +691,92 @@
     </nav>
 
     <!-- Main Content Area -->
-    <main class="transition-all duration-300 pt-16">
-      <!-- Home Page -->
-      <div id="homePage" class="page-container active">
-        <div class="container mx-auto px-6 py-8">
-          <!-- Dashboard Banner -->
-          <section class="flex flex-col items-center mb-12 fadeIn" aria-labelledby="dashboardBanner">
-            <div class="w-full flex justify-center mb-6">
-              <img id="dynamicImage" class="rounded-xl max-w-full lg:max-w-md h-auto object-cover shadow-lg ring-1 ring-white/10" src="/placeholder.svg" loading="lazy" alt="Dashboard banner" />
+    <main class="lg:ml-80 transition-all duration-300">
+      <div class="h-16" aria-hidden="true"></div>
+      <div class="container mx-auto px-6 py-8">
+        <!-- Dashboard Banner -->
+        <section class="flex flex-col items-center mb-12 fadeIn" aria-labelledby="dashboardBanner">
+          <div class="w-full flex justify-center mb-6">
+            <img id="dynamicImage" class="rounded-xl max-w-full lg:max-w-md h-auto object-cover shadow-lg ring-1 ring-white/10" src="/placeholder.svg" loading="lazy" alt="Dashboard banner" />
+          </div>
+          <div class="flex-1 text-center slideUp" style="animation-delay: 0.2s;">
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-3">
+              <h1 id="name" class="text-3xl font-bold gradient-text font-heading"></h1>
+              <div id="version" class="bg-gradient-to-r from-primary-900/50 to-primary-800/50 text-primary-300 px-3 py-1 text-xs rounded-full border border-primary-700/30"></div>
             </div>
-            <div class="flex-1 text-center slideUp" style="animation-delay: 0.2s;">
-              <div class="flex flex-wrap items-center justify-center gap-3 mb-3">
-                <h1 id="name" class="text-3xl font-bold gradient-text font-heading"></h1>
-                <div id="version" class="bg-gradient-to-r from-primary-900/50 to-primary-800/50 text-primary-300 px-3 py-1 text-xs rounded-full border border-primary-700/30"></div>
-              </div>
-              <p id="description" class="text-gray-400 text-lg mb-4"></p>
-              <div id="headerStatus" class="text-sm text-green-400 font-medium mb-6 flex items-center justify-center">
-                <span class="inline-block w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" aria-hidden="true"></span>
-                <span id="headerStatusText"></span>
-              </div>
-              <!-- External Links using Small Frosted Card Style -->
-              <div id="apiLinks" class="flex flex-wrap gap-4 justify-center"></div>
+            <p id="description" class="text-gray-400 text-lg mb-4"></p>
+            <div id="headerStatus" class="text-sm text-green-400 font-medium mb-6 flex items-center justify-center">
+              <span class="inline-block w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" aria-hidden="true"></span>
+              <span id="headerStatusText"></span>
             </div>
-          </section>
+            <!-- External Links using Small Frosted Card Style -->
+            <div id="apiLinks" class="flex flex-wrap gap-4 justify-center"></div>
+          </div>
+        </section>
 
-          <!-- Categories Section -->
-          <section class="mb-12">
-            <div class="flex items-center justify-between mb-6">
-              <h2 class="text-2xl font-bold gradient-text font-heading">API Categories</h2>
-              <div class="text-sm text-gray-400">
-                <span id="homeCategoryCount">0</span> categories available
+        <!-- Dashboard Stats Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 slideUp" style="animation-delay: 0.3s;" aria-label="Dashboard Stats">
+          <!-- Total APIs Card -->
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="Total APIs">
+            <header class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium font-heading">Total APIs</h3>
+              <div class="p-2 bg-primary-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
               </div>
+            </header>
+            <div class="flex items-end">
+              <span id="totalApis" class="text-3xl font-bold">0</span>
+              <span class="text-gray-400 ml-2 mb-1">endpoints</span>
             </div>
-            <div id="categoriesGrid" class="categories-grid">
-              <!-- Categories will be populated here -->
+          </article>
+          <!-- Categories Card -->
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="Categories">
+            <header class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium font-heading category-header-text">Categories</h3>
+              <div class="p-2 bg-green-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+            </header>
+            <div class="flex items-end">
+              <span id="totalCategories" class="text-3xl font-bold">0</span>
+              <span class="text-gray-400 ml-2 mb-1">groups</span>
             </div>
-          </section>
-        </div>
-      </div>
-
-      <!-- Stats Page -->
-      <div id="statsPage" class="page-container hidden">
-        <div class="container mx-auto px-6 py-8">
-          <h1 class="text-3xl font-bold gradient-text font-heading mb-8">API Statistics</h1>
-          
-          <!-- Dashboard Stats Cards -->
-          <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 slideUp" style="animation-delay: 0.3s;" aria-label="Dashboard Stats">
-            <!-- Total APIs Card -->
-            <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="Total APIs">
-              <header class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-medium font-heading">Total APIs</h3>
-                <div class="p-2 bg-primary-900/30 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                  </svg>
-                </div>
-              </header>
-              <div class="flex items-end">
-                <span id="totalApis" class="text-3xl font-bold">0</span>
-                <span class="text-gray-400 ml-2 mb-1">endpoints</span>
+          </article>
+          <!-- GET Endpoints Card -->
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="GET Endpoints">
+            <header class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium font-heading">GET Endpoints</h3>
+              <div class="p-2 bg-blue-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
               </div>
-            </article>
-            <!-- Categories Card -->
-            <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="Categories">
-              <header class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-medium font-heading category-header-text">Categories</h3>
-                <div class="p-2 bg-green-900/30 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                </div>
-              </header>
-              <div class="flex items-end">
-                <span id="totalCategories" class="text-3xl font-bold">0</span>
-                <span class="text-gray-400 ml-2 mb-1">groups</span>
-              </div>
-            </article>
-            <!-- GET Endpoints Card -->
-            <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="GET Endpoints">
-              <header class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-medium font-heading">GET Endpoints</h3>
-                <div class="p-2 bg-blue-900/30 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                </div>
-              </header>
-              <div class="flex items-end">
-                <span id="getEndpoints" class="text-3xl font-bold">0</span>
-                <span class="text-gray-400 ml-2 mb-1">endpoints</span>
-              </div>
-            </article>
-            <!-- POST Endpoints Card -->
-            <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="POST Endpoints">
-              <header class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-medium font-heading">POST Endpoints</h3>
-                <div class="p-2 bg-amber-900/30 rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                  </svg>
-                </div>
-              </header>
-              <div class="flex items-end">
-                <span id="postEndpoints" class="text-3xl font-bold">0</span>
-                <span class="text-gray-400 ml-2 mb-1">endpoints</span>
-              </div>
-            </article>
-          </section>
-
-          <!-- Additional Stats -->
-          <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            <!-- Method Distribution -->
-            <div class="frosted-card p-6 shadow-lg">
-              <h3 class="text-lg font-medium font-heading mb-4">API Method Distribution</h3>
-              <div class="space-y-4">
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-sm text-gray-400">GET</span>
-                    <span class="text-sm text-gray-400" id="getPercentage">0%</span>
-                  </div>
-                  <div class="w-full bg-dark-600 rounded-full h-2.5">
-                    <div id="getBar" class="bg-blue-500 h-2.5 rounded-full" style="width: 0%"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-sm text-gray-400">POST</span>
-                    <span class="text-sm text-gray-400" id="postPercentage">0%</span>
-                  </div>
-                  <div class="w-full bg-dark-600 rounded-full h-2.5">
-                    <div id="postBar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-sm text-gray-400">PUT</span>
-                    <span class="text-sm text-gray-400" id="putPercentage">0%</span>
-                  </div>
-                  <div class="w-full bg-dark-600 rounded-full h-2.5">
-                    <div id="putBar" class="bg-amber-500 h-2.5 rounded-full" style="width: 0%"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-sm text-gray-400">DELETE</span>
-                    <span class="text-sm text-gray-400" id="deletePercentage">0%</span>
-                  </div>
-                  <div class="w-full bg-dark-600 rounded-full h-2.5">
-                    <div id="deleteBar" class="bg-red-500 h-2.5 rounded-full" style="width: 0%"></div>
-                  </div>
-                </div>
-              </div>
+            </header>
+            <div class="flex items-end">
+              <span id="getEndpoints" class="text-3xl font-bold">0</span>
+              <span class="text-gray-400 ml-2 mb-1">endpoints</span>
             </div>
-
-            <!-- Category Distribution -->
-            <div class="frosted-card p-6 shadow-lg">
-              <h3 class="text-lg font-medium font-heading mb-4">Category Distribution</h3>
-              <div id="categoryDistribution" class="space-y-4">
-                <!-- Will be populated by JavaScript -->
+          </article>
+          <!-- POST Endpoints Card -->
+          <article class="frosted-card p-6 shadow-lg card-hover" role="region" aria-label="POST Endpoints">
+            <header class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium font-heading">POST Endpoints</h3>
+              <div class="p-2 bg-amber-900/30 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
               </div>
+            </header>
+            <div class="flex items-end">
+              <span id="postEndpoints" class="text-3xl font-bold">0</span>
+              <span class="text-gray-400 ml-2 mb-1">endpoints</span>
             </div>
-          </section>
-        </div>
-      </div>
-
-      <!-- Documentation Page -->
-      <div id="documentationPage" class="page-container hidden">
-        <div class="container mx-auto px-6 py-8">
-          <h1 class="text-3xl font-bold gradient-text font-heading mb-8">API Documentation</h1>
-          
-          <!-- Introduction Section -->
-          <section class="doc-section">
-            <h2 class="doc-section-title">Introduction</h2>
-            <div class="doc-card">
-              <h3 class="doc-card-title">Free REST API</h3>
-              <p class="doc-card-description">
-                Access powerful API endpoints for your projects completely free, with no authentication required. Start building amazing applications today!
-              </p>
-              <p class="doc-card-description">
-                Our REST API is designed with developers in mind, offering a seamless experience from integration to production.
-              </p>
-            </div>
-          </section>
-          
-          <!-- Features Section -->
-          <section class="doc-section">
-            <h2 class="doc-section-title">Why Choose Our API?</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- No Authentication -->
-              <div class="feature-card">
-                <div class="feature-icon bg-accent-blue/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <h3 class="feature-title text-accent-blue">No Authentication</h3>
-                <p class="text-gray-300 leading-relaxed">
-                  Access our APIs instantly without the need for API keys or complex authentication processes. Perfect for rapid prototyping and development.
-                </p>
-              </div>
-              
-              <!-- High Performance -->
-              <div class="feature-card">
-                <div class="feature-icon bg-accent-pink/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 class="feature-title text-accent-pink">High Performance</h3>
-                <p class="text-gray-300 leading-relaxed">
-                  Enjoy fast response times and reliable service for all your API needs. Our infrastructure is optimized for speed and stability.
-                </p>
-              </div>
-              
-              <!-- Comprehensive Documentation -->
-              <div class="feature-card">
-                <div class="feature-icon bg-accent-purple/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <h3 class="feature-title text-accent-purple">Comprehensive Documentation</h3>
-                <p class="text-gray-300 leading-relaxed">
-                  Access detailed documentation to help you integrate our API seamlessly into your projects. Complete with examples and use cases.
-                </p>
-              </div>
-              
-              <!-- Rich Data Sources -->
-              <div class="feature-card">
-                <div class="feature-icon bg-accent-teal/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                  </svg>
-                </div>
-                <h3 class="feature-title text-accent-teal">Rich Data Sources</h3>
-                <p class="text-gray-300 leading-relaxed">
-                  Access a wide variety of data sources through our API endpoints, from user profiles to complex datasets for your applications.
-                </p>
-              </div>
-              
-              <!-- Analytics & Monitoring -->
-              <div class="feature-card">
-                <div class="feature-icon bg-accent-blue/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <h3 class="feature-title text-accent-blue">Analytics & Monitoring</h3>
-                <p class="text-gray-300 leading-relaxed">
-                  Track your API usage with our built-in analytics dashboard. Monitor performance, usage patterns, and more.
-                </p>
-              </div>
-              
-              <!-- 24/7 Support -->
-              <div class="feature-card">
-                <div class="feature-icon bg-accent-pink/10">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 class="feature-title text-accent-pink">24/7 Support</h3>
-                <p class="text-gray-300 leading-relaxed">
-                  Our dedicated support team is available around the clock to help you with any issues or questions you may have.
-                </p>
-              </div>
-            </div>
-          </section>
-      
-          <!-- Terms of Service Section -->
-          <section class="doc-section">
-            <h2 class="doc-section-title">Terms of Service</h2>
-            
-            <div class="doc-card">
-              <h3 class="doc-card-title">Usage Guidelines</h3>
-              <p class="doc-card-description">
-                By using our API, you agree to the following terms:
-              </p>
-              <ul class="list-disc list-inside space-y-2 text-gray-300 mb-6">
-                <li>Use the API for lawful purposes only</li>
-                <li>Do not attempt to overload or disrupt our services</li>
-                <li>Respect rate limits and usage quotas</li>
-                <li>Attribute our API when using it in your applications</li>
-              </ul>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div>
-                  <h4 class="text-lg font-semibold mb-3 text-accent-blue">Limitations of Liability</h4>
-                  <p class="text-gray-300 leading-relaxed">
-                    Our API is provided "as is" without any warranties, express or implied. We are not liable for any damages arising from the use of our API.
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 class="text-lg font-semibold mb-3 text-accent-blue">Data Privacy</h4>
-                  <p class="text-gray-300 leading-relaxed">
-                    We respect your privacy and handle all data in accordance with our Privacy Policy. By using our API, you consent to our data practices as described in the Privacy Policy.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-          
-          <!-- Examples Section -->
-          
-        </div>
+          </article>
+        </section>
       </div>
     </main>
 
@@ -1355,53 +902,18 @@
         const capitalizeFirstLetter = str => str ? str.charAt(0).toUpperCase() + str.slice(1) : str;
 
         // DOM Element references
-        const navMenu = document.getElementById('navMenu');
-        const navMenuToggle = document.getElementById('navMenuToggle');
-        const closeNavMenu = document.getElementById('closeNavMenu');
-        const navMenuBackdrop = document.getElementById('navMenuBackdrop');
-        const navMenuItems = document.querySelectorAll('.nav-menu-item');
-        const pages = document.querySelectorAll('.page-container');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+        const sidebarSearchContainer = document.getElementById('sidebarSearchContainer');
+        const sidebarSearchToggle = document.getElementById('sidebarSearchToggle');
+        const sidebarSearch = document.getElementById('sidebarSearch');
+        const sidebarSearchClear = document.getElementById('sidebarSearchClear');
+        const sidebarSearchCancel = document.getElementById('sidebarSearchCancel');
         const navbar = document.getElementById('navbar');
         const navbarSeparator = document.getElementById('navbarSeparator');
-        const homeCategoryCount = document.getElementById('homeCategoryCount');
-
-        // Page state persistence
-        const ACTIVE_PAGE_KEY = 'dashboard_active_page';
-
-        // Function to save active page to localStorage
-        function saveActivePage(pageId) {
-          localStorage.setItem(ACTIVE_PAGE_KEY, pageId);
-        }
-
-        // Function to load and apply active page from localStorage
-        function loadActivePage() {
-          const savedPage = localStorage.getItem(ACTIVE_PAGE_KEY);
-          if (savedPage) {
-            const targetMenuItem = document.querySelector(`.nav-menu-item[data-page="${savedPage}"]`);
-            if (targetMenuItem) {
-              // Update active state in menu
-              navMenuItems.forEach(menuItem => {
-                menuItem.classList.remove('active');
-              });
-              targetMenuItem.classList.add('active');
-              
-              // Show target page, hide others
-              pages.forEach(page => {
-                const pageId = page.id;
-                if (pageId === `${savedPage}Page`) {
-                  page.classList.remove('hidden');
-                  page.classList.add('active');
-                } else {
-                  page.classList.remove('active');
-                  page.classList.add('hidden');
-                }
-              });
-            }
-          }
-        }
-
-        // Load active page on initial load
-        loadActivePage();
+        const totalApiCount = document.getElementById('totalApiCount');
+        const totalCategoryCount = document.getElementById('totalCategoryCount');
 
         // Notification Elements
         const notificationToggle = document.getElementById('notificationToggle');
@@ -1416,183 +928,182 @@
         const apiResponseContent = document.getElementById('apiResponseContent');
         const apiResponseActions = document.getElementById('apiResponseActions');
 
-        // Toggle Navigation Menu
-        const toggleNavMenu = () => {
-          const isOpen = navMenu.classList.contains('active');
+        // Reset Sidebar State
+        function resetSidebar() {
+          sidebarSearchContainer.classList.add('hidden');
+          sidebarSearchToggle.classList.remove('hidden');
+          sidebarSearch.value = '';
+          sidebarSearchClear.classList.add('hidden');
+          sidebarSearch.dispatchEvent(new Event('input'));
+          document.querySelectorAll('.category-content').forEach(content => content.classList.remove('open'));
+          document.querySelectorAll('#sidebarCategories button .category-arrow').forEach(arrow => arrow.classList.remove('open'));
+          document.querySelectorAll('#sidebarCategories > div').forEach(div => { div.style.display = ''; });
+          document.querySelectorAll('.category-card').forEach(card => card.classList.remove('active'));
+        }
+
+        // Toggle Sidebar - Enhanced
+        const toggleSidebar = () => {
+          const isOpen = !sidebar.classList.contains('-translate-x-full');
           if (isOpen) {
-            navMenu.classList.remove('active');
-            navMenuBackdrop.classList.remove('active');
+            sidebar.classList.add('-translate-x-full');
+            sidebarBackdrop.classList.remove('active');
             document.body.classList.remove('overflow-hidden');
+            resetSidebar();
           } else {
-            navMenu.classList.add('active');
-            navMenuBackdrop.classList.add('active');
+            sidebar.classList.remove('-translate-x-full');
+            sidebar.classList.add('sidebar-entrance');
+            sidebarBackdrop.classList.add('active');
             if (window.innerWidth < 1024) document.body.classList.add('overflow-hidden');
+            setTimeout(() => {
+              sidebar.classList.remove('sidebar-entrance');
+            }, 300);
           }
         };
-        navMenuToggle.addEventListener('click', toggleNavMenu);
-        closeNavMenu.addEventListener('click', toggleNavMenu);
-        navMenuBackdrop.addEventListener('click', toggleNavMenu);
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarBackdrop.addEventListener('click', toggleSidebar);
 
-        // Page Navigation
-        navMenuItems.forEach(item => {
-          item.addEventListener('click', () => {
-            const targetPage = item.dataset.page;
-            
-            // Update active state in menu
-            navMenuItems.forEach(menuItem => {
-              menuItem.classList.remove('active');
-            });
-            item.classList.add('active');
-            
-            // Show target page, hide others
-            pages.forEach(page => {
-              const pageId = page.id;
-              if (pageId === `${targetPage}Page`) {
-                page.classList.remove('hidden');
-                setTimeout(() => {
-                  page.classList.add('active');
-                }, 50);
-              } else {
-                page.classList.remove('active');
-                setTimeout(() => {
-                  page.classList.add('hidden');
-                }, 400);
+        // Toggle Sidebar Search Input (Replacing "Cancel" with "Close" when closing)
+        const toggleSearch = () => {
+          const isVisible = !sidebarSearchContainer.classList.contains('hidden');
+          if (isVisible) {
+            // Change button text to "Close" when closing search
+            sidebarSearchCancel.textContent = "Close";
+            sidebarSearchContainer.style.opacity = '0';
+            sidebarSearchContainer.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+              sidebarSearchContainer.classList.add('hidden');
+              sidebarSearchToggle.classList.remove('hidden');
+              sidebarSearchContainer.style.opacity = '';
+              sidebarSearchContainer.style.transform = '';
+              // Collapse all categories when search is closed.
+              document.querySelectorAll('.category-content').forEach(content => content.classList.remove('open'));
+              document.querySelectorAll('#sidebarCategories button .category-arrow').forEach(arrow => arrow.classList.remove('open'));
+            }, 200);
+          } else {
+            // Restore button text to "Cancel" when opening search
+            sidebarSearchCancel.textContent = "Cancel";
+            sidebarSearchContainer.classList.remove('hidden');
+            sidebarSearchToggle.classList.add('hidden');
+            sidebarSearchContainer.style.opacity = '0';
+            sidebarSearchContainer.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+              sidebarSearchContainer.style.opacity = '1';
+              sidebarSearchContainer.style.transform = 'translateY(0)';
+              sidebarSearch.focus();
+            }, 10);
+          }
+        };
+        sidebarSearchToggle.addEventListener('click', toggleSearch);
+        sidebarSearchCancel.addEventListener('click', () => {
+          toggleSearch();
+          sidebarSearch.value = '';
+          sidebarSearch.dispatchEvent(new Event('input'));
+        });
+        sidebarSearchClear.addEventListener('click', () => { 
+          sidebarSearch.value = ''; 
+          sidebarSearch.dispatchEvent(new Event('input')); 
+          sidebarSearch.focus(); 
+          sidebarSearchClear.classList.add('hidden'); 
+        });
+
+        // Keyboard Shortcuts for Search and Escape
+        document.addEventListener('keydown', (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            if (sidebarSearchContainer.classList.contains('hidden')) toggleSearch();
+            sidebarSearch.focus();
+          }
+          if (e.key === 'Escape' && !sidebarSearchContainer.classList.contains('hidden')) {
+            toggleSearch();
+            sidebarSearch.value = '';
+            sidebarSearch.dispatchEvent(new Event('input'));
+          }
+        });
+
+        // Sidebar Search Filtering with "No Results" Message - Enhanced
+        sidebarSearch.addEventListener('input', () => {
+          const searchTerm = sidebarSearch.value.toLowerCase();
+          const apiItems = document.querySelectorAll('.sidebar-api-item');
+          const categoryHeaders = document.querySelectorAll('#sidebarCategories button');
+          sidebarSearchClear.classList.toggle('hidden', searchTerm.length === 0);
+
+          // Count visible items for statistics
+          let visibleItemsCount = 0;
+
+          apiItems.forEach(item => {
+            const name = item.dataset.apiName.toLowerCase();
+            const desc = item.dataset.apiDesc.toLowerCase();
+            if (name.includes(searchTerm) || desc.includes(searchTerm)) {
+              item.style.display = '';
+              visibleItemsCount++;
+              const categoryContent = item.closest('.category-content');
+              if (categoryContent && !categoryContent.classList.contains('open')) {
+                categoryContent.classList.add('open');
+                const categoryHeader = document.querySelector(`#sidebarCategories [data-target="${categoryContent.id}"]`);
+                if (categoryHeader) {
+                  categoryHeader.querySelector('.category-arrow').classList.add('open');
+                  categoryHeader.closest('.category-card').classList.add('active');
+                }
               }
-            });
-            
-            // Close menu on mobile
-            if (window.innerWidth < 1024) {
-              toggleNavMenu();
+            } else {
+              item.style.display = 'none';
             }
-            saveActivePage(targetPage);
           });
+
+          // Update category counts and visibility
+          let visibleCategoriesCount = 0;
+          categoryHeaders.forEach(header => {
+            const categoryId = header.dataset.target;
+            const content = document.getElementById(categoryId);
+            const visibleItems = Array.from(content.querySelectorAll('.sidebar-api-item')).filter(item => item.style.display !== 'none');
+            const countEl = header.querySelector('.category-count');
+            if (countEl) countEl.textContent = visibleItems.length;
+
+            const categoryCard = header.closest('.category-card');
+            if (visibleItems.length === 0 && searchTerm) {
+              categoryCard.style.display = 'none';
+            } else {
+              categoryCard.style.display = '';
+              visibleCategoriesCount++;
+            }
+          });
+
+          // Update total counts in footer
+          if (totalApiCount) totalApiCount.textContent = visibleItemsCount;
+          if (totalCategoryCount) totalCategoryCount.textContent = visibleCategoriesCount;
+
+          // Show "No Results" message if needed
+          const noResultsMsgId = "noResultsMessage";
+          let noResultsMsg = document.getElementById(noResultsMsgId);
+          if (visibleItemsCount === 0 && searchTerm.trim() !== "") {
+            if (!noResultsMsg) {
+              noResultsMsg = document.createElement('div');
+              noResultsMsg.id = noResultsMsgId;
+              noResultsMsg.className = "no-results-message";
+              noResultsMsg.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <p class="text-lg font-medium mb-1">No results found</p>
+                <p class="text-sm">Try adjusting your search terms</p>
+              `;
+              document.getElementById('sidebarCategories').appendChild(noResultsMsg);
+            }
+          } else {
+            if (noResultsMsg) noResultsMsg.remove();
+          }
         });
 
         // API Item Click Handler: Opens Modal with API Details
         document.addEventListener('click', event => {
-          const apiItem = event.target.closest('.sidebar-api-item') || event.target.closest('.category-grid-item');
+          const apiItem = event.target.closest('.sidebar-api-item');
           if (apiItem) handleApiClick(apiItem.dataset);
-          
-          // Handle "View all" button clicks
-          const viewAllBtn = event.target.closest('.view-all-btn');
-          if (viewAllBtn) {
-            const categoryId = viewAllBtn.dataset.categoryId;
-            showAllEndpoints(categoryId);
-          }
         });
-        
-        // Function to show all endpoints for a category
-        function showAllEndpoints(categoryId) {
-          // Find the category in our data
-          const category = apiCategories.find(cat => cat.id === categoryId);
-          if (!category) return;
-          
-          // Create a modal to display all endpoints
-          const modal = document.createElement('div');
-          modal.className = 'fixed inset-0 z-50 overflow-y-auto backdrop-blur-sm flex items-center justify-center p-4';
-          modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-          modal.setAttribute('role', 'dialog');
-          modal.setAttribute('aria-modal', 'true');
-          
-          const modalContent = document.createElement('div');
-          modalContent.className = 'bg-dark-800 border border-dark-600/50 rounded-xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-xl';
-          
-          // Modal header
-          const header = document.createElement('header');
-          header.className = 'flex justify-between items-start p-6 border-b border-dark-600/50 bg-gradient-to-r from-dark-800 to-dark-700 rounded-t-xl';
-          header.innerHTML = `
-            <div>
-              <h3 class="text-xl font-semibold gradient-text font-heading">${capitalizeFirstLetter(category.name)}</h3>
-              <p class="text-gray-400 text-sm mt-1">${category.items.length} endpoints available</p>
-            </div>
-            <button type="button" class="close-modal-btn text-gray-400 hover:text-gray-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors" aria-label="Close modal">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          `;
-          
-          // Modal body
-          const body = document.createElement('div');
-          body.className = 'p-6 overflow-y-auto flex-1';
-          
-          // Create list of endpoints
-          const endpointsList = document.createElement('div');
-          endpointsList.className = 'space-y-3';
-          
-          // Sort items by name
-          const sortedItems = [...category.items].sort((a, b) => a.name.localeCompare(b.name));
-          
-          sortedItems.forEach(item => {
-            const method = item.method.toLowerCase();
-            const methodColor = methodColors[method] || { bg: 'bg-gray-800', text: 'text-gray-300', border: 'border-gray-700/30' };
-            
-            const itemEl = document.createElement('div');
-            itemEl.className = 'p-3 bg-dark-700/50 rounded-lg hover:bg-dark-600/50 transition-colors cursor-pointer';
-            itemEl.dataset.apiPath = item.path;
-            itemEl.dataset.apiName = item.name;
-            itemEl.dataset.apiDesc = item.desc;
-            itemEl.dataset.apiAuthor = item.author || '';
-            itemEl.dataset.apiMethod = method;
-            
-            itemEl.innerHTML = `
-              <div class="flex justify-between items-center">
-                <div>
-                  <div class="font-medium">${capitalizeFirstLetter(item.name)}</div>
-                  <div class="text-sm text-gray-400">${item.desc}</div>
-                </div>
-                <span class="${methodColor.bg} ${methodColor.text} border ${methodColor.border} px-2 py-1 text-xs rounded uppercase">${method}</span>
-              </div>
-            `;
-            
-            endpointsList.appendChild(itemEl);
-          });
-          
-          body.appendChild(endpointsList);
-          
-          // Assemble modal
-          modalContent.appendChild(header);
-          modalContent.appendChild(body);
-          modal.appendChild(modalContent);
-          document.body.appendChild(modal);
-          document.body.classList.add('modal-open');
-          setupFocusTrap(modal);
-          
-          // Add event listeners
-          const closeBtn = modal.querySelector('.close-modal-btn');
-          closeBtn.addEventListener('click', () => {
-            document.body.removeChild(modal);
-            document.body.classList.remove('modal-open');
-          });
-          
-          // Close on backdrop click
-          modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-              document.body.removeChild(modal);
-              document.body.classList.remove('modal-open');
-            }
-          });
-          
-          // Handle endpoint clicks
-          modal.querySelectorAll('[data-api-path]').forEach(endpoint => {
-            endpoint.addEventListener('click', () => {
-              handleApiClick(endpoint.dataset);
-              document.body.removeChild(modal);
-              document.body.classList.remove('modal-open');
-            });
-          });
-        }
-        
         function handleApiClick(dataset) {
           const { apiPath, apiName, apiDesc, apiAuthor, apiMethod } = dataset;
           const method = apiMethod ? apiMethod.toLowerCase() : 'get';
           const modal = document.getElementById('apiResponseModal');
           modal.classList.remove('hidden');
-          setTimeout(() => {
-            modal.classList.add('visible');
-            setupFocusTrap(modal);
-          }, 10);
-          document.body.classList.add('modal-open');
           const modalRefs = {
             label: document.getElementById('apiResponseModalLabel'),
             desc: document.getElementById('apiResponseModalDesc'),
@@ -1653,31 +1164,28 @@
             modalRefs.submitBtn.disabled = true;
             validateInputs();
             modalRefs.submitBtn.onclick = async () => {
-              // ... validation code ...
-              
+              const inputs = modalRefs.queryInputContainer.querySelectorAll('input');
+              let isValid = true;
+              const data = {};
+              inputs.forEach(input => {
+                if (!input.value.trim()) {
+                  isValid = false;
+                  input.classList.add('border-red-500', 'ring-1', 'ring-red-500');
+                } else {
+                  input.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
+                  data[input.dataset.param] = input.value.trim();
+                }
+              });
               if (!isValid) return;
-              
-              // Add loading state
-              const originalText = modalRefs.submitBtn.textContent;
-              modalRefs.submitBtn.disabled = true;
-              modalRefs.submitBtn.innerHTML = '<span class="inline-block animate-spin mr-2">↻</span> Processing...';
-              
               modalRefs.queryInputContainer.innerHTML = '';
               modalRefs.submitBtn.classList.add('hidden');
-              
               if (method === 'get') {
-                // ... existing code ...
                 const newParams = new URLSearchParams(data);
                 const apiUrlWithParams = `${baseApiUrl}?${newParams.toString()}`;
                 handleApiRequest(apiUrlWithParams, modalRefs, apiName, 'get');
               } else if (method === 'post') {
-                // ... existing code ...
                 handleApiRequest(baseApiUrl, modalRefs, apiName, 'post', data);
               }
-              
-              // Reset button state (though it's hidden now)
-              modalRefs.submitBtn.disabled = false;
-              modalRefs.submitBtn.textContent = originalText;
             };
           } else {
             handleApiRequest(baseApiUrl, modalRefs, apiName, method);
@@ -1742,12 +1250,7 @@
 
         // Modal Close Button Handler
         document.getElementById('closeModalBtn').addEventListener('click', () => {
-          const modal = document.getElementById('apiResponseModal');
-          modal.classList.remove('visible');
-          setTimeout(() => {
-            modal.classList.add('hidden');
-          }, 300);
-          document.body.classList.remove('modal-open');
+          document.getElementById('apiResponseModal').classList.add('hidden');
         });
 
         // Notification Handling
@@ -1832,18 +1335,6 @@
           });
         }
 
-        // Method color mapping
-        const methodColors = {
-          get: { bg: 'bg-green-900/50', text: 'text-green-300', border: 'border-green-800/30' },
-          post: { bg: 'bg-blue-900/50', text: 'text-blue-300', border: 'border-blue-800/30' },
-          put: { bg: 'bg-amber-900/50', text: 'text-amber-300', border: 'border-amber-800/30' },
-          delete: { bg: 'bg-red-900/50', text: 'text-red-300', border: 'border-red-800/30' },
-          patch: { bg: 'bg-purple-900/50', text: 'text-purple-300', border: 'border-purple-800/30' }
-        };
-
-        // Store API categories globally for use in view all functionality
-        let apiCategories = [];
-
         // Load Settings and API Information
         try {
           const settings = await fetch('/settings.json').then(r => r.json());
@@ -1851,7 +1342,7 @@
           const setContent = (id, property, value) => {
             const el = document.getElementById(id);
             if (el) {
-              if (property === 'textContent' && ['header', 'name'].includes(id)) {
+              if (property === 'textContent' && ['header', 'sidebarHeader', 'name'].includes(id)) {
                 el.textContent = value;
                 el.classList.add('gradient-text');
               } else { el[property] = value; }
@@ -1882,6 +1373,8 @@
           setContent('versionHeader', 'textContent', settings.header.status || "Online!");
           setContent('description', 'textContent', settings.description || "Interactive API Explorer");
           setContent('headerStatusText', 'textContent', settings.header.status || "Online!");
+          setContent('sidebarHeader', 'textContent', settings.name || "API Dashboard");
+          setContent('sidebarVersion', 'textContent', settings.version || "v1.0 Beta");
 
           // External Links Section
           const apiLinksContainer = document.getElementById('apiLinks');
@@ -1911,128 +1404,102 @@
 
           // Process API Categories & Endpoints
           const sortedCategories = apiInfo.categories.sort((a, b) => a.name.localeCompare(b.name));
-          apiCategories = sortedCategories.map((cat, idx) => ({...cat, id: `cat-${idx}`}));
-          
-          let totalApis = 0, getEndpoints = 0, postEndpoints = 0, putEndpoints = 0, deleteEndpoints = 0;
-          
+          let totalApis = 0, getEndpoints = 0, postEndpoints = 0;
           sortedCategories.forEach(category => {
             totalApis += category.items.length;
             category.items.forEach(item => {
-              const method = item.method.toLowerCase();
-              if (method === 'get') getEndpoints++;
-              if (method === 'post') postEndpoints++;
-              if (method === 'put') putEndpoints++;
-              if (method === 'delete') deleteEndpoints++;
+              if (item.method.toLowerCase() === 'get') getEndpoints++;
+              if (item.method.toLowerCase() === 'post') postEndpoints++;
             });
           });
-          
-          // Update stats
           setContent('totalApis', 'textContent', totalApis);
           setContent('totalCategories', 'textContent', sortedCategories.length);
           setContent('getEndpoints', 'textContent', getEndpoints);
           setContent('postEndpoints', 'textContent', postEndpoints);
-          
-          // Update counters
-          if (homeCategoryCount) homeCategoryCount.textContent = sortedCategories.length;
 
-          // Update method distribution bars
-          const total = totalApis || 1; // Avoid division by zero
-          const getPercentage = Math.round((getEndpoints / total) * 100);
-          const postPercentage = Math.round((postEndpoints / total) * 100);
-          const putPercentage = Math.round((putEndpoints / total) * 100);
-          const deletePercentage = Math.round((deleteEndpoints / total) * 100);
-          
-          document.getElementById('getPercentage').textContent = `${getPercentage}%`;
-          document.getElementById('postPercentage').textContent = `${postPercentage}%`;
-          document.getElementById('putPercentage').textContent = `${putPercentage}%`;
-          document.getElementById('deletePercentage').textContent = `${deletePercentage}%`;
-          
-          document.getElementById('getBar').style.width = `${getPercentage}%`;
-          document.getElementById('postBar').style.width = `${postPercentage}%`;
-          document.getElementById('putBar').style.width = `${putPercentage}%`;
-          document.getElementById('deleteBar').style.width = `${deletePercentage}%`;
+          // Update sidebar footer counters
+          if (totalApiCount) totalApiCount.textContent = totalApis;
+          if (totalCategoryCount) totalCategoryCount.textContent = sortedCategories.length;
 
-          // Update category distribution
-          const categoryDistribution = document.getElementById('categoryDistribution');
-          if (categoryDistribution) {
-            categoryDistribution.innerHTML = '';
-            sortedCategories.forEach(category => {
-              const percentage = Math.round((category.items.length / total) * 100);
-              const div = document.createElement('div');
-              div.innerHTML = `
-                <div class="flex justify-between mb-1">
-                  <span class="text-sm text-gray-400">${capitalizeFirstLetter(category.name)}</span>
-                  <span class="text-sm text-gray-400">${percentage}%</span>
-                </div>
-                <div class="w-full bg-dark-600 rounded-full h-2.5">
-                  <div class="bg-primary-500 h-2.5 rounded-full" style="width: ${percentage}%"></div>
+          // Render Sidebar Categories as Card-Style Blocks with Active Hover/State Mark - Enhanced
+          const sidebarCategories = document.getElementById('sidebarCategories');
+          sidebarCategories.innerHTML = '';
+          sortedCategories.forEach((category, idx) => {
+            const catId = `category-${idx}`;
+            const catCard = document.createElement('div');
+            catCard.className = 'category-card slideInRight';
+            catCard.style.animationDelay = `${idx * 0.05}s`;
+
+            const catHeader = document.createElement('button');
+            catHeader.className = 'w-full flex items-center justify-between rounded-md focus:outline-none transition-colors text-left';
+            catHeader.dataset.target = catId;
+            const capName = capitalizeFirstLetter(category.name);
+            catHeader.innerHTML = `
+              <div class="flex items-center">
+                <span class="category-header-text font-medium">${capName}</span>
+                <span class="category-count">${category.items.length}</span>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 category-arrow text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            `;
+            const catContent = document.createElement('div'); 
+            catContent.id = catId;
+            catContent.className = 'category-content pl-2';
+            const sortedItems = category.items.sort((a, b) => a.name.localeCompare(b.name));
+            sortedItems.forEach(item => {
+              const capItem = capitalizeFirstLetter(item.name);
+              const methodColors = {
+                get: 'bg-green-900/50 text-green-300 border border-green-800/30',
+                post: 'bg-blue-900/50 text-blue-300 border border-blue-800/30',
+                put: 'bg-amber-900/50 text-amber-300 border border-amber-800/30',
+                delete: 'bg-red-900/50 text-red-300 border border-red-800/30',
+                patch: 'bg-purple-900/50 text-purple-300 border border-purple-800/30'
+              };
+              const method = item.method.toLowerCase();
+              const methodColor = methodColors[method] || 'bg-gray-800 text-gray-300 border border-gray-700/30';
+              const itemEl = document.createElement('div');
+              itemEl.className = 'py-2 px-2 my-1 hover:bg-dark-600 rounded-md transition-colors cursor-pointer sidebar-api-item';
+              itemEl.dataset.apiPath = item.path;
+              itemEl.dataset.apiName = item.name;
+              itemEl.dataset.apiDesc = item.desc;
+              itemEl.dataset.apiAuthor = item.author || '';
+              itemEl.dataset.apiMethod = method;
+              itemEl.innerHTML = `
+                <div class="flex items-center justify-between">
+                  <span class="text-sm truncate">${capItem}</span>
+                  <span class="${methodColor} px-2 py-0.5 text-xs rounded uppercase method-badge">${method}</span>
                 </div>
               `;
-              categoryDistribution.appendChild(div);
+              catContent.appendChild(itemEl);
             });
-          }
+            catCard.appendChild(catHeader);
+            catCard.appendChild(catContent);
+            sidebarCategories.appendChild(catCard);
 
-          // Render Categories Grid for Home Page
-          const categoriesGrid = document.getElementById('categoriesGrid');
-          if (categoriesGrid) {
-            categoriesGrid.innerHTML = '';
-            apiCategories.forEach((category, idx) => {
-              const categoryCard = document.createElement('div');
-              categoryCard.className = 'category-grid-card slideInRight';
-              categoryCard.style.animationDelay = `${idx * 0.05}s`;
-              
-              const categoryHeader = document.createElement('div');
-              categoryHeader.className = 'category-grid-header';
-              categoryHeader.innerHTML = `
-                <h3 class="category-grid-title">${capitalizeFirstLetter(category.name)}</h3>
-                <div class="category-grid-count">${category.items.length} endpoints</div>
-              `;
-              
-              const categoryItems = document.createElement('div');
-              categoryItems.className = 'category-grid-items';
-              
-              // Sort items by name
-              const sortedItems = category.items.sort((a, b) => a.name.localeCompare(b.name));
-              
-              // Display up to 5 items, with a "View All" link if more
-              const displayItems = sortedItems.slice(0, 5);
-              displayItems.forEach(item => {
-                const method = item.method.toLowerCase();
-                const methodColor = methodColors[method] || { bg: 'bg-gray-800', text: 'text-gray-300', border: 'border-gray-700/30' };
-                
-                const itemEl = document.createElement('div');
-                itemEl.className = 'category-grid-item';
-                itemEl.dataset.apiPath = item.path;
-                itemEl.dataset.apiName = item.name;
-                itemEl.dataset.apiDesc = item.desc;
-                itemEl.dataset.apiAuthor = item.author || '';
-                itemEl.dataset.apiMethod = method;
-                
-                itemEl.innerHTML = `
-                  <span class="category-grid-item-name">${capitalizeFirstLetter(item.name)}</span>
-                  <span class="category-grid-item-method ${methodColor.bg} ${methodColor.text} border ${methodColor.border}">${method}</span>
-                `;
-                
-                categoryItems.appendChild(itemEl);
-              });
-              
-              // Add "View All" if there are more items
-              if (sortedItems.length > 5) {
-                const viewAllEl = document.createElement('div');
-                viewAllEl.className = 'mt-2 text-center';
-                viewAllEl.innerHTML = `
-                  <button class="text-sm text-primary-400 hover:text-primary-300 transition-colors view-all-btn" data-category-id="${category.id}">
-                    View all ${sortedItems.length} endpoints
-                  </button>
-                `;
-                categoryItems.appendChild(viewAllEl);
+            // Only one category open at a time and mark active card on tap/touch.
+            catHeader.addEventListener('click', () => {
+              // Remove active mark from all category cards.
+              document.querySelectorAll('.category-card').forEach(card => card.classList.remove('active'));
+
+              const target = document.getElementById(catId);
+              const arrow = catHeader.querySelector('.category-arrow');
+              if (!target.classList.contains('open')) {
+                // Close any open categories.
+                document.querySelectorAll('.category-content').forEach(content => content.classList.remove('open'));
+                document.querySelectorAll('#sidebarCategories button .category-arrow').forEach(a => a.classList.remove('open'));
+                target.classList.add('open');
+                arrow.classList.add('open');
+                // Mark this category card as active.
+                catCard.classList.add('active');
+              } else {
+                target.classList.remove('open');
+                arrow.classList.remove('open');
+                // Remove active state if re-tapping an open card.
+                catCard.classList.remove('active');
               }
-              
-              categoryCard.appendChild(categoryHeader);
-              categoryCard.appendChild(categoryItems);
-              categoriesGrid.appendChild(categoryCard);
             });
-          }
+          });
         } catch (error) {
           console.error('Error loading settings or API info:', error);
         } finally {
@@ -2043,72 +1510,6 @@
             setTimeout(() => { loadingScreen.style.display = 'none'; }, 500);
           }, 2000);
         }
-      });
-
-      // Add keyboard event listener for modal close
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          const modal = document.getElementById('apiResponseModal');
-          if (!modal.classList.contains('hidden')) {
-            modal.classList.remove('visible');
-            setTimeout(() => {
-              modal.classList.add('hidden');
-            }, 300);
-            document.body.classList.remove('modal-open');
-          }
-          
-          // Also close any dynamically created modals
-          const dynamicModals = document.querySelectorAll('.fixed.inset-0.z-50.bg-black\\/70');
-          dynamicModals.forEach(dynamicModal => {
-            if (dynamicModal !== modal) {
-              document.body.removeChild(dynamicModal);
-              document.body.classList.remove('modal-open');
-            }
-          });
-        }
-      });
-
-      // Add focus trap utility function
-      function setupFocusTrap(modalElement) {
-        const focusableElements = modalElement.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        
-        if (focusableElements.length === 0) return;
-        
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-        
-        firstElement.focus();
-        
-        modalElement.addEventListener('keydown', (e) => {
-          if (e.key === 'Tab') {
-            if (e.shiftKey && document.activeElement === firstElement) {
-              e.preventDefault();
-              lastElement.focus();
-            } else if (!e.shiftKey && document.activeElement === lastElement) {
-              e.preventDefault();
-              firstElement.focus();
-            }
-          }
-        });
-      }
-
-      // Add smooth scrolling to section navigation
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId !== '#') {
-            e.preventDefault();
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }
-          }
-        });
       });
     </script>
   </body>
